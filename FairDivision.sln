@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FairDivision", "FairDivision\FairDivision.csproj", "{5330DEB3-2996-4A96-9D9F-A70943BC888B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FairDivisionAlgorithm", "FairDivisionAlgorithm\FairDivisionAlgorithm.csproj", "{0A4DAE9F-C56F-4689-9737-5385CC7EC926}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5330DEB3-2996-4A96-9D9F-A70943BC888B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5330DEB3-2996-4A96-9D9F-A70943BC888B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5330DEB3-2996-4A96-9D9F-A70943BC888B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5330DEB3-2996-4A96-9D9F-A70943BC888B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A4DAE9F-C56F-4689-9737-5385CC7EC926}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A4DAE9F-C56F-4689-9737-5385CC7EC926}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A4DAE9F-C56F-4689-9737-5385CC7EC926}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A4DAE9F-C56F-4689-9737-5385CC7EC926}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AB3A7890-B7B7-445A-B05E-EB37EB22FB1A}
+	EndGlobalSection
+EndGlobal
