@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithm.cs" />
+    <Compile Include="DataContexts\ConfigurationContext.cs" />
+    <Compile Include="DataContexts\MembersContext.cs" />
+    <Compile Include="DataContexts\ObjectsContext.cs" />
     <Compile Include="Objects.cs" />
     <Compile Include="Members.cs" />
     <Compile Include="Configuration.cs" />
@@ -50,11 +53,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XMLHandler.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AppData\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AppData\ExampleConfiguration\Configuration.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
