@@ -7,15 +7,8 @@ using System.Threading.Tasks;
 
 namespace FairDivisionAlgorithm
 {
-    public static class Configuration
+    public static class ConfigurationOperations
     {
-        private static Dictionary<string, string> _currentConfiguration;
-        
-        public static Dictionary<string,string> GetCurrentConfiguration()
-        {
-            return _currentConfiguration;
-        }
-
         public static Dictionary<string,string> GetConfiguration(string caseName)
         {
             Dictionary<string, string> result = new Dictionary<string, string>();
@@ -39,9 +32,13 @@ namespace FairDivisionAlgorithm
             path = Path.GetFullPath(Path.Combine(path, @"..\..\..\FairDivisionAlgorithm\\AppData\\", caseName));
             string[] attributeNames = new string[] { "name", "measureUnit" };
 
-            if (File.Exists(path + "\\Configuration.xml"))
+
+            if(Directory.Exists(path))
             {
-                File.Delete(path + "\\Configuration.xml");
+                if (File.Exists(path + "\\Configuration.xml"))
+                {
+                    File.Delete(path + "\\Configuration.xml");
+                }
             }
             else
             {
@@ -58,10 +55,15 @@ namespace FairDivisionAlgorithm
             string path = Directory.GetCurrentDirectory();
             path = Path.GetFullPath(Path.Combine(path, @"..\..\..\FairDivisionAlgorithm\\AppData\\", caseName));
 
-            if (File.Exists(path + "\\Configuration.xml"))
+            if (Directory.Exists(path))
             {
-                File.Delete(path + "\\Configuration.xml");
+                if (File.Exists(path + "\\Configuration.xml"))
+                {
+                    File.Delete(path + "\\Configuration.xml");
+                }
             }
+
+            Directory.Delete(path);
         }
 
         public static List<string> GetAllConfigurations()

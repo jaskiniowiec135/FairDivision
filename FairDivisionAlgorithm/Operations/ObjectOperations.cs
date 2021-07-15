@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FairDivisionAlgorithm
 {
-    public class Objects
+    public class ObjectOperations
     {
         private List<DivisionObject> ListOfObjects;
 

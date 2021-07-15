@@ -3,13 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FairDivision"
+        xmlns:local="clr-namespace:FairDivision" 
+        xmlns:datacontexts="clr-namespace:FairDivisionAlgorithm.DataContexts;assembly=FairDivisionAlgorithm"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="373.684">
+        Title="MainWindow" Height="550" Width="380">
     <Grid>
         <TabControl SelectionChanged="TabControl_SelectionChanged">
             <TabItem x:Name="ConfigurationTab" Header="Configuration">
-                <Grid>
+                <Grid d:DataContext="{d:DesignInstance Type=datacontexts:ConfigurationContext}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="2*"/>
@@ -24,16 +25,16 @@
                         <RowDefinition Height="30*"/>
                     </Grid.RowDefinitions>
                     <ComboBox x:Name="configComboBox" ToolTip="Configuration name" Margin="10" IsEditable="True"  VerticalAlignment="Top" DropDownOpened="configComboBox_DropDownOpened" Grid.Column="0" Grid.Row="0"/>
-                    <TextBox x:Name="txtConfigParameter1" Text="{Binding Path=ConfigParam, Mode=TwoWay}" Margin="10" ToolTip="Parameter 1" Height="34" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="0" Grid.Row="1"/>
-                    <TextBox x:Name="txtConfigUnit1" ToolTip="Measure unit 1" Margin="10" Height="34" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="1" Grid.Row="1"/>
-                    <TextBox x:Name="txtConfigParameter2" Text="{Binding Path=ConfigParam, Mode=TwoWay}" ToolTip="Parameter 2" Margin="10" Height="34" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="0" Grid.Row="2"/>
-                    <TextBox x:Name="txtConfigUnit2" ToolTip="Measure unit 2" Margin="10" Height="34" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="1" Grid.Row="2"/>
-                    <TextBox x:Name="txtConfigParameter3" ToolTip="Parameter 3" Margin="10" Height="34" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="0" Grid.Row="3"/>
-                    <TextBox x:Name="txtConfigUnit3" ToolTip="Measure unit 3" Margin="10" Height="34" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="1" Grid.Row="3"/>
-                    <TextBox x:Name="txtConfigParameter4" ToolTip="Parameter 4" Margin="10" Height="34" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="0" Grid.Row="4"/>
-                    <TextBox x:Name="txtConfigUnit4" ToolTip="Measure unit 4" Margin="10" Height="34" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="1" Grid.Row="4"/>
-                    <TextBox x:Name="txtConfigParameter5" ToolTip="Parameter 5" Margin="10" Height="34" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="0" Grid.Row="5"/>
-                    <TextBox x:Name="txtConfigUnit5" ToolTip="Measure unit 5" Margin="10" Height="34" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center"  Grid.Column="1" Grid.Row="5"/>
+                    <TextBox Text="{Binding ConfigParams[0]}" Margin="10" ToolTip="Parameter 1" Height="34" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="0" Grid.Row="1"/>
+                    <TextBox Text="{Binding ConfigUnits[0]}" ToolTip="Measure unit 1" Margin="10" Height="34" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="1" Grid.Row="1"/>
+                    <TextBox Text="{Binding ConfigParams[1]}" ToolTip="Parameter 2" Margin="10" Height="34" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="0" Grid.Row="2"/>
+                    <TextBox Text="{Binding ConfigUnits[1]}" ToolTip="Measure unit 2" Margin="10" Height="34" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="1" Grid.Row="2"/>
+                    <TextBox Text="{Binding ConfigParams[2]}" ToolTip="Parameter 3" Margin="10" Height="34" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="0" Grid.Row="3"/>
+                    <TextBox Text="{Binding ConfigUnits[2]}" ToolTip="Measure unit 3" Margin="10" Height="34" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="1" Grid.Row="3"/>
+                    <TextBox Text="{Binding ConfigParams[3]}" ToolTip="Parameter 4" Margin="10" Height="34" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="0" Grid.Row="4"/>
+                    <TextBox Text="{Binding ConfigUnits[3]}" ToolTip="Measure unit 4" Margin="10" Height="34" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="1" Grid.Row="4"/>
+                    <TextBox Text="{Binding ConfigParams[4]}" ToolTip="Parameter 5" Margin="10" Height="34" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="0" Grid.Row="5"/>
+                    <TextBox Text="{Binding ConfigUnits[4]}" ToolTip="Measure unit 5" Margin="10" Height="34" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center"  Grid.Column="1" Grid.Row="5"/>
                     <Grid Grid.ColumnSpan="3" Grid.Row="6">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -59,7 +60,7 @@
                 </Grid>
             </TabItem>
             <TabItem x:Name="MembersTab" Header="Members">
-                <Grid>
+                <Grid d:DataContext="{d:DesignInstance Type=datacontexts:MembersContext}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="40*"/>
                         <ColumnDefinition Width="20*"/>
@@ -76,42 +77,42 @@
                         <RowDefinition Height="30*"/>
                         <RowDefinition Height="30*"/>
                     </Grid.RowDefinitions>
-                    <ComboBox x:Name="membersConfigComboBox" ToolTip="Select configuration" VerticalAlignment="Top" DropDownOpened="membersConfigComboBox_DropDownOpened" Margin="10" Grid.ColumnSpan="2" Grid.Row="0"/>
-                    <ComboBox x:Name="membersComboBox" ToolTip="Member name" IsEditable="True" VerticalAlignment="Top" DropDownOpened="configComboBox_DropDownOpened" Grid.ColumnSpan="2" Grid.Row="1" Margin="10"/>
-                    <TextBox ToolTip="Parameter 1" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Height="34"/>
+                    <ComboBox x:Name="membersConfigComboBox" ToolTip="Select configuration" VerticalAlignment="Top" DropDownOpened="membersConfigComboBox_DropDownOpened" DropDownClosed="membersConfigComboBox_SelectionChanged" Margin="10" Grid.ColumnSpan="2" Grid.Row="0"/>
+                    <ComboBox x:Name="membersComboBox" ToolTip="Member name" IsEditable="True" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="1" Margin="10"/>
+                    <TextBox Text="{Binding MemberParams[0]}" ToolTip="Parameter 1" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Height="34"/>
                     <Grid Grid.Row="2" Grid.Column="1">
-                        <RadioButton x:Name="membersRadioSmallerEqual1" Content="&lt;=" HorizontalAlignment="Left" Margin="19,12,0,0" VerticalAlignment="Top"/>
-                        <RadioButton x:Name="membersRadioBiggerEqual1"  Content=">=" HorizontalAlignment="Left" Margin="19,32,0,0" VerticalAlignment="Top"/>
+                        <RadioButton x:Name="membersRadioLessThan1" Content="&lt;=" HorizontalAlignment="Left" Margin="19,12,0,0" VerticalAlignment="Top"/>
+                        <RadioButton x:Name="membersRadioMoreThan1"  Content=">=" HorizontalAlignment="Left" Margin="19,32,0,0" VerticalAlignment="Top"/>
                     </Grid>
-                    <TextBox ToolTip="Desired value 1" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="2"/>
-                    <TextBox ToolTip="Rank 1" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="3" Grid.Row="2"/>
-                    <TextBox ToolTip="Parameter 2" Margin="10" VerticalContentAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Grid.Column="0" Grid.Row="3" Height="34"/>
+                    <TextBox x:Name="memberDesiredValue1" Text="{Binding CurrentMember.Values[0]}" ToolTip="Desired value 1" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="2"/>
+                    <TextBox x:Name="membersRank1" ToolTip="Rank 1" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="3" Grid.Row="2"/>
+                    <TextBox Text="{Binding MemberParams[1]}" ToolTip="Parameter 2" Margin="10" VerticalContentAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Grid.Column="0" Grid.Row="3" Height="34"/>
                     <Grid Grid.Column="1" Grid.Row="3">
-                        <RadioButton x:Name="membersRadioSmallerEqual2" Content="&lt;=" HorizontalAlignment="Left" Margin="19,12,0,0" VerticalAlignment="Top"/>
-                        <RadioButton x:Name="membersRadioBiggerEqual2"  Content=">=" HorizontalAlignment="Left" Margin="19,32,0,0" VerticalAlignment="Top"/>
+                        <RadioButton x:Name="membersRadioLessThan2" Content="&lt;=" HorizontalAlignment="Left" Margin="19,12,0,0" VerticalAlignment="Top"/>
+                        <RadioButton x:Name="membersRadioMoreThan2"  Content=">=" HorizontalAlignment="Left" Margin="19,32,0,0" VerticalAlignment="Top"/>
                     </Grid>
-                    <TextBox ToolTip="Desired value 2" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="3"/>
+                    <TextBox x:Name="memberDesiredValue2" ToolTip="Desired value 2" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="3"/>
                     <TextBox ToolTip="Rank 2" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="3" Grid.Row="3"/>
-                    <TextBox ToolTip="Parameter 3" Margin="10" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="0" Grid.Row="4" Height="34"/>
+                    <TextBox Text="{Binding MemberParams[2]}" ToolTip="Parameter 3" Margin="10" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="0" Grid.Row="4" Height="34"/>
                     <Grid Grid.Column="1" Grid.Row="4">
-                        <RadioButton x:Name="membersRadioSmallerEqual3" Content="&lt;=" HorizontalAlignment="Left" Margin="19,10,0,0" VerticalAlignment="Top" />
-                        <RadioButton x:Name="membersRadioBiggerEqual3"  Content=">=" HorizontalAlignment="Left" Margin="19,29,0,0" VerticalAlignment="Top"/>
+                        <RadioButton x:Name="membersRadioLessThan3" Content="&lt;=" HorizontalAlignment="Left" Margin="19,10,0,0" VerticalAlignment="Top" />
+                        <RadioButton x:Name="membersRadioMoreThan3"  Content=">=" HorizontalAlignment="Left" Margin="19,29,0,0" VerticalAlignment="Top"/>
                     </Grid>
-                    <TextBox ToolTip="Desired value 3" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="4"/>
+                    <TextBox x:Name="memberDesiredValue3" ToolTip="Desired value 3" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="4"/>
                     <TextBox ToolTip="Rank 3" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="3" Grid.Row="4"/>
-                    <TextBox ToolTip="Parameter 4" Margin="10" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="0" Grid.Row="5" Height="33"/>
+                    <TextBox Text="{Binding MemberParams[3]}" ToolTip="Parameter 4" Margin="10" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="0" Grid.Row="5" Height="33"/>
                     <Grid Grid.Column="1" Grid.Row="5">
-                        <RadioButton x:Name="membersRadioSmallerEqual4" Content="&lt;=" HorizontalAlignment="Left" Margin="19,10,0,0" VerticalAlignment="Top"/>
-                        <RadioButton x:Name="membersRadioBiggerEqual4"  Content=">=" HorizontalAlignment="Left" Margin="19,28,0,0" VerticalAlignment="Top"/>
+                        <RadioButton x:Name="membersRadioLessThan4" Content="&lt;=" HorizontalAlignment="Left" Margin="19,10,0,0" VerticalAlignment="Top"/>
+                        <RadioButton x:Name="membersRadioMoreThan4"  Content=">=" HorizontalAlignment="Left" Margin="19,28,0,0" VerticalAlignment="Top"/>
                     </Grid>
-                    <TextBox ToolTip="Desired value 4" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="5"/>
+                    <TextBox x:Name="memberDesiredValue4" ToolTip="Desired value 4" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="5"/>
                     <TextBox ToolTip="Rank 4" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="3" Grid.Row="5"/>
-                    <TextBox ToolTip="Parameter 5" Margin="10" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="0" Grid.Row="6" Height="33"/>
+                    <TextBox Text="{Binding MemberParams[4]}" ToolTip="Parameter 5" Margin="10" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="0" Grid.Row="6" Height="33"/>
                     <Grid Grid.Column="1" Grid.Row="6">
-                        <RadioButton x:Name="membersRadioSmallerEqual5" Content="&lt;=" HorizontalAlignment="Left" Margin="19,10,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="6"/>
-                        <RadioButton x:Name="membersRadioBiggerEqual5"  Content=">=" HorizontalAlignment="Left" Margin="19,28,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="6"/>
+                        <RadioButton x:Name="membersRadioLessThan5" Content="&lt;=" HorizontalAlignment="Left" Margin="19,10,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="6"/>
+                        <RadioButton x:Name="membersRadioMoreThan5"  Content=">=" HorizontalAlignment="Left" Margin="19,28,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="6"/>
                     </Grid>
-                    <TextBox ToolTip="Desired value 5" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="6"/>
+                    <TextBox x:Name="memberDesiredValue5" ToolTip="Desired value 5" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="6"/>
                     <TextBox ToolTip="Rank 5" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="3" Grid.Row="6"/>
                     <Grid Grid.ColumnSpan="4" Grid.Row="7">
                         <Grid.ColumnDefinitions>
@@ -120,24 +121,24 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="membersRead" Margin="10" Height="40" VerticalAlignment="Top" Grid.Column="0">
+                        <Button x:Name="memberAdd" Margin="10" Height="40" VerticalAlignment="Top" Grid.Column="0" Click="memberAdd_Click">
                             <Button.Content>
-                                <TextBlock Text="Get member" TextAlignment="Center" TextWrapping="Wrap" />
+                                <TextBlock Text="Add member" TextAlignment="Center" TextWrapping="Wrap" />
                             </Button.Content>
                         </Button>
-                        <Button x:Name="membersAdd" Margin="10" Height="40" VerticalAlignment="Top" Grid.Column="1" Click="membersAdd_Click">
-                            <Button.Content>
-                                <TextBlock  Text="Add member" TextAlignment="Center"  TextWrapping="Wrap"/>
-                            </Button.Content>
-                        </Button>
-                        <Button x:Name="membersRemove" Margin="10" Height="40" VerticalAlignment="Top" Grid.Column="2">
+                        <Button x:Name="memberRemove" Margin="10" Height="40" VerticalAlignment="Top" Grid.Column="1">
                             <Button.Content>
                                 <TextBlock  Text="Remove member" TextAlignment="Center"  TextWrapping="Wrap"/>
                             </Button.Content>
                         </Button>
-                        <Button x:Name="membersSave" Margin="10" Height="40" VerticalAlignment="Top" Grid.Column="3">
+                        <Button x:Name="membersSave" Margin="10" Height="40" VerticalAlignment="Top" Grid.Column="2">
                             <Button.Content>
                                 <TextBlock  Text="Save members" TextAlignment="Center"  TextWrapping="Wrap"/>
+                            </Button.Content>
+                        </Button>
+                        <Button x:Name="membersRemove" Margin="10" Height="40" VerticalAlignment="Top" Grid.Column="3">
+                            <Button.Content>
+                                <TextBlock  Text="Remove members" TextAlignment="Center"  TextWrapping="Wrap"/>
                             </Button.Content>
                         </Button>
                     </Grid>
