@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FairDivisionAlgorithm.DataContexts
 {
@@ -37,7 +33,9 @@ namespace FairDivisionAlgorithm.DataContexts
         public MembersContext()
         {
             Members = new ObservableCollection<MemberObject>();
-            CurrentMember = new MemberObject("", new bool[5], new int[5] { 1, 0, 0, 0, 0 },
+            CurrentMember = new MemberObject("",
+                new bool[5],
+                new int[5],
                 new double[5]);
 
             InitializeCollections();
@@ -45,9 +43,9 @@ namespace FairDivisionAlgorithm.DataContexts
 
         public void AddMember(MemberObject member)
         {
-            if(!members.Any(x => x.Name == member.Name))
+            if (!Members.Any(x => x.Name == member.Name))
             {
-                members.Add(member);
+                Members.Add(member);
             }
         }
 

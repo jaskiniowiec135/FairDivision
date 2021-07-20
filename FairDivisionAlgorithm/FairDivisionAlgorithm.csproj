@@ -48,8 +48,8 @@
     <Compile Include="Operations\ObjectOperations.cs" />
     <Compile Include="Operations\MemberOperations.cs" />
     <Compile Include="Operations\ConfigurationOperations.cs" />
-    <Compile Include="DivisionObject.cs" />
-    <Compile Include="MemberObject.cs" />
+    <Compile Include="Objects\DivisionObject.cs" />
+    <Compile Include="Objects\MemberObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XMLHandler.cs" />
   </ItemGroup>
