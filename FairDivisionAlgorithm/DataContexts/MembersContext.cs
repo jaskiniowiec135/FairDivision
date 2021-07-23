@@ -69,7 +69,7 @@ namespace FairDivisionAlgorithm.DataContexts
         {
             MemberObject memberToRemove = members.First(x => x.Name == name);
 
-            members.Remove(memberToRemove);
+            Members.Remove(memberToRemove);
         }
 
         public MemberObject ReturnSelectedCustomer(string name)

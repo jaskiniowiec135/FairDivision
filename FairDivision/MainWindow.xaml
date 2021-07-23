@@ -130,7 +130,7 @@
                                 <TextBlock Text="Save member" TextAlignment="Center" TextWrapping="Wrap" />
                             </Button.Content>
                         </Button>
-                        <Button x:Name="memberRemove" Margin="10" Height="40" VerticalAlignment="Top" Grid.Column="1">
+                        <Button x:Name="memberRemove" Margin="10" Height="40" VerticalAlignment="Top" Grid.Column="1" Click="memberRemove_Click">
                             <Button.Content>
                                 <TextBlock  Text="Remove member" TextAlignment="Center"  TextWrapping="Wrap"/>
                             </Button.Content>

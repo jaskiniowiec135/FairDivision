@@ -185,5 +185,19 @@ namespace FairDivision
                 membersContext.CurrentMember = membersContext.ReturnSelectedCustomer(name.ToString());
             }
         }
+
+        private void memberRemove_Click(object sender, RoutedEventArgs e)
+        {
+            var name = membersComboBox.SelectedItem;
+
+            if (name != null && membersContext.Members.Any(
+                x => x.Name == name.ToString()))
+            {
+                membersContext.RemoveMember(name.ToString());
+
+                membersComboBox.Text = "";
+                membersContext.CurrentMember = new MemberObject();
+            }
+        }
     }
 }
