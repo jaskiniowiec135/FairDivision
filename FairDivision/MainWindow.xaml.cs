@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Diagnostics;
 
 namespace FairDivision
 {
@@ -146,56 +145,45 @@ namespace FairDivision
             ConfigurationOperations.Remove(name);
         }
 
-        private void memberAdd_Click(object sender, RoutedEventArgs e)
+        private void memberSave_Click(object sender, RoutedEventArgs e)
         {
             int numberOfParams = membersContext.MemberParams.Count;
 
-            MemberObject newMember = new MemberObject("",
+            MemberObject member = new MemberObject("",
                 new bool[numberOfParams],
                 new int[numberOfParams],
                 new double[numberOfParams]);
 
-            newMember.Name = membersContext.CurrentMember.Name;
+            member.Name = membersComboBox.Text;
 
             for (int i = 0; i < numberOfParams; i++)
             {
-                newMember.LessThan[i] = membersContext.CurrentMember.LessThan[i];
-                newMember.Values[i] = membersContext.CurrentMember.Values[i];
-                newMember.Rank[i] = membersContext.CurrentMember.Rank[i];
+                member.LessThan[i] = membersContext.CurrentMember.LessThan[i];
+                member.Values[i] = membersContext.CurrentMember.Values[i];
+                member.Rank[i] = membersContext.CurrentMember.Rank[i];
             }
 
-            membersContext.AddMember(newMember);
+            membersContext.SaveMember(member);
         }
 
         private void membersComboBox_DropDownOpened(object sender, EventArgs e)
         {
             membersComboBox.Items.Clear();
 
-            Debug.WriteLine("Member params:");
-
             foreach (var m in membersContext.Members)
             {
                 membersComboBox.Items.Add(m.Name);
-
-                Debug.WriteLine(m.Name);
-
-                for (int i = 0; i < m.Values.Length; i++)
-                {
-                    Debug.WriteLine($"Less than: {m.LessThan[i]}, /t Value: {m.Values[i]}, /t Rank: {m.Rank[i]}");
-                }
-            }
-
-            Debug.WriteLine("Current member: ");
-
-            for (int i = 0; i < membersContext.CurrentMember.Values.Length; i++)
-            {
-                Debug.WriteLine($"Less than: {membersContext.CurrentMember.LessThan[i]}, /t Value: {membersContext.CurrentMember.Values[i]}, /t Rank: {membersContext.CurrentMember.Rank[i]}");
             }
         }
 
         private void membersComboBox_DropDownClosed(object sender, EventArgs e)
         {
+            var name = membersComboBox.SelectedItem;
 
+            if (name != null)
+            {
+                membersContext.CurrentMember = membersContext.ReturnSelectedCustomer(name.ToString());
+            }
         }
     }
 }
