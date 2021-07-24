@@ -51,10 +51,10 @@ namespace FairDivisionAlgorithm
             handler.SaveConfigurationToFile(config);
         }
 
-        public static void Remove(string caseName)
+        public static void Remove(string name)
         {
             string path = Directory.GetCurrentDirectory();
-            path = Path.GetFullPath(Path.Combine(path, @"..\..\..\FairDivisionAlgorithm\\AppData\\", caseName));
+            path = Path.GetFullPath(Path.Combine(path, @"..\..\..\FairDivisionAlgorithm\\AppData\\", name));
 
             if (Directory.Exists(path))
             {

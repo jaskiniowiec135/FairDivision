@@ -32,7 +32,6 @@ namespace FairDivisionAlgorithm.DataContexts
 
         public MembersContext()
         {
-            Members = new ObservableCollection<MemberObject>();
             CurrentMember = new MemberObject("",
                 new bool[5],
                 new int[5],
@@ -101,6 +100,7 @@ namespace FairDivisionAlgorithm.DataContexts
 
         public void InitializeCollections()
         {
+            Members = new ObservableCollection<MemberObject>();
             MemberParams = new ObservableCollection<string>();
 
             MemberParams.Add("");

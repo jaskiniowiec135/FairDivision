@@ -91,7 +91,7 @@ namespace FairDivisionAlgorithm
 
                     member.LessThan[i] = bool.Parse(n.Elements().ElementAt(0).Value);
                     member.Values[i] = int.Parse(n.Elements().ElementAt(1).Value);
-                    member.Rank[i] = double.Parse(n.Elements().ElementAt(2).Value);
+                    member.Rank[i] = double.Parse(n.Elements().ElementAt(2).Value.Replace('.',','));
                 }
 
                 result.Add(member);

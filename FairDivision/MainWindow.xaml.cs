@@ -208,5 +208,13 @@ namespace FairDivision
             MemberOperations.Save(membersContext.Members.ToList(), 
                 membersConfigComboBox.SelectedItem.ToString());
         }
+
+        private void membersRemove_Click(object sender, RoutedEventArgs e)
+        {
+            MemberOperations.Remove(membersConfigComboBox.SelectedItem.ToString());
+        }
+
+        #endregion
+
     }
 }

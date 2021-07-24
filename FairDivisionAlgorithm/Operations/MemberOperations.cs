@@ -50,9 +50,18 @@ namespace FairDivisionAlgorithm
             handler.SaveMembersToFile(members);
         }
 
-        public static void Remove()
+        public static void Remove(string name)
         {
+            string path = Directory.GetCurrentDirectory();
+            path = Path.GetFullPath(Path.Combine(path, @"..\..\..\FairDivisionAlgorithm\\AppData\\", name));
 
+            if (Directory.Exists(path))
+            {
+                if (File.Exists(path + fileName))
+                {
+                    File.Delete(path + fileName);
+                }
+            }
         }
     }
 }
