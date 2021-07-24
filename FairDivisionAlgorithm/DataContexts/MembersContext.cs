@@ -49,7 +49,7 @@ namespace FairDivisionAlgorithm.DataContexts
             }
             else
             {
-                ModifyMember(member);
+                UpdateMember(member);
             }
         }
 
@@ -58,10 +58,10 @@ namespace FairDivisionAlgorithm.DataContexts
             Members.Add(member);
         }
 
-        private void ModifyMember(MemberObject member)
+        private void UpdateMember(MemberObject member)
         {
-            MemberObject memberToModify = Members.First(x => x.Name == member.Name);
-            int index = Members.IndexOf(memberToModify);
+            MemberObject memberToUpdate = Members.First(x => x.Name == member.Name);
+            int index = Members.IndexOf(memberToUpdate);
             Members[index] = CurrentMember;
         }
 

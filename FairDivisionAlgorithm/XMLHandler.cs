@@ -33,7 +33,25 @@ namespace FairDivisionAlgorithm
 
         public void SaveMembersToFile(List<MemberObject> members)
         {
+            XDocument document = new XDocument(
+                new XElement("members"));
 
+            foreach(MemberObject member in members)
+            {
+                document.Descendants().First(x => x.Name == "members").Add(new XElement("member",
+                    new XAttribute("name", member.Name),
+                    new XElement("params")));
+
+                for (int i = 0; i < member.LessThan.Length; i++)
+                {
+                    document.Descendants().Last(x => x.Name == "params").Add(new XElement("param",
+                        new XElement("lessThan", member.LessThan[i]),
+                        new XElement("value", member.Values[i]),
+                        new XElement("rank", member.Rank[i])));
+                }
+            }
+
+            document.Save(Path + FileName);
         }
 
         public Dictionary<string, string> GetConfigurationFromDocument()
@@ -70,8 +88,6 @@ namespace FairDivisionAlgorithm
                 for (int i = 0; i < node.Descendants().Where(x => x.Name == "param").Count(); i++)
                 {
                     var n = node.Descendants().Where(x => x.Name == "param").ElementAt(i);
-
-                    Debug.WriteLine(n.Elements().ElementAt(2).Value);
 
                     member.LessThan[i] = bool.Parse(n.Elements().ElementAt(0).Value);
                     member.Values[i] = int.Parse(n.Elements().ElementAt(1).Value);

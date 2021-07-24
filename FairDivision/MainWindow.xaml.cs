@@ -202,5 +202,11 @@ namespace FairDivision
                 membersContext.CurrentMember = new MemberObject();
             }
         }
+
+        private void membersSave_Click(object sender, RoutedEventArgs e)
+        {
+            MemberOperations.Save(membersContext.Members.ToList(), 
+                membersConfigComboBox.SelectedItem.ToString());
+        }
     }
 }

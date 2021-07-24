@@ -10,6 +10,8 @@ namespace FairDivisionAlgorithm
 {
     public static class ConfigurationOperations
     {
+        static string fileName = "\\Configuration.xml";
+
         public static Dictionary<string,string> GetConfiguration(string name)
         {
             Dictionary<string, string> result = new Dictionary<string, string>();
@@ -17,9 +19,9 @@ namespace FairDivisionAlgorithm
             string path = Directory.GetCurrentDirectory();
             path = Path.GetFullPath(Path.Combine(path, @"..\..\..\FairDivisionAlgorithm\\AppData\\", name));
 
-            XMLHandler handler = new XMLHandler(path, "\\Configuration.xml");
+            XMLHandler handler = new XMLHandler(path, fileName);
 
-            if(File.Exists(path + "\\Configuration.xml"))
+            if(File.Exists(path + fileName))
             {
                 result = handler.GetConfigurationFromDocument();
             }
@@ -27,16 +29,16 @@ namespace FairDivisionAlgorithm
             return result;
         }
 
-        public static void Save(Dictionary<string,string> config, string caseName)
+        public static void Save(Dictionary<string,string> config, string name)
         {
             string path = Directory.GetCurrentDirectory();
-            path = Path.GetFullPath(Path.Combine(path, @"..\..\..\FairDivisionAlgorithm\\AppData\\", caseName));
+            path = Path.GetFullPath(Path.Combine(path, @"..\..\..\FairDivisionAlgorithm\\AppData\\", name));
 
             if(Directory.Exists(path))
             {
-                if (File.Exists(path + "\\Configuration.xml"))
+                if (File.Exists(path + fileName))
                 {
-                    File.Delete(path + "\\Configuration.xml");
+                    File.Delete(path + fileName);
                 }
             }
             else
@@ -44,7 +46,7 @@ namespace FairDivisionAlgorithm
                 Directory.CreateDirectory(path);
             }
 
-            XMLHandler handler = new XMLHandler(path, "\\Configuration.xml");
+            XMLHandler handler = new XMLHandler(path, fileName);
 
             handler.SaveConfigurationToFile(config);
         }
@@ -56,9 +58,9 @@ namespace FairDivisionAlgorithm
 
             if (Directory.Exists(path))
             {
-                if (File.Exists(path + "\\Configuration.xml"))
+                if (File.Exists(path + fileName))
                 {
-                    File.Delete(path + "\\Configuration.xml");
+                    File.Delete(path + fileName);
                 }
             }
 
