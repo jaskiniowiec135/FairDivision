@@ -5,27 +5,27 @@
 			<param>
 				<lessThan>true</lessThan>
 				<value>2</value>
-				<rank>0.2</rank>
+				<rank>0,2</rank>
 			</param>
 			<param>
 				<lessThan>true</lessThan>
 				<value>0</value>
-				<rank>0.2</rank>
+				<rank>0,2</rank>
 			</param>
 			<param>
 				<lessThan>false</lessThan>
 				<value>20</value>
-				<rank>0.2</rank>
+				<rank>0,2</rank>
 			</param>
 			<param>
 				<lessThan>true</lessThan>
 				<value>1</value>
-				<rank>0.2</rank>
+				<rank>0,2</rank>
 			</param>
 			<param>
 				<lessThan>true</lessThan>
 				<value>200</value>
-				<rank>0.2</rank>
+				<rank>0,2</rank>
 			</param>
 		</params>
 	</member>
@@ -34,27 +34,27 @@
 			<param>
 				<lessThan>false</lessThan>
 				<value>1</value>
-				<rank>0.1</rank>
+				<rank>0,1</rank>
 			</param>
 			<param>
 				<lessThan>true</lessThan>
 				<value>1</value>
-				<rank>0.3</rank>
+				<rank>0,3</rank>
 			</param>
 			<param>
 				<lessThan>false</lessThan>
 				<value>10</value>
-				<rank>0.1</rank>
+				<rank>0,1</rank>
 			</param>
 			<param>
 				<lessThan>true</lessThan>
 				<value>3</value>
-				<rank>0.4</rank>
+				<rank>0,4</rank>
 			</param>
 			<param>
 				<lessThan>true</lessThan>
 				<value>200</value>
-				<rank>0.1</rank>
+				<rank>0,1</rank>
 			</param>
 		</params>
 	</member>
@@ -63,27 +63,27 @@
 			<param>
 				<lessThan>true</lessThan>
 				<value>2</value>
-				<rank>0.15</rank>
+				<rank>0,15</rank>
 			</param>
 			<param>
 				<lessThan>true</lessThan>
 				<value>1</value>
-				<rank>0.2</rank>
+				<rank>0,2</rank>
 			</param>
 			<param>
 				<lessThan>true</lessThan>
 				<value>40</value>
-				<rank>0.15</rank>
+				<rank>0,15</rank>
 			</param>
 			<param>
 				<lessThan>true</lessThan>
 				<value>1</value>
-				<rank>0.2</rank>
+				<rank>0,2</rank>
 			</param>
 			<param>
 				<lessThan>true</lessThan>
 				<value>300</value>
-				<rank>0.3</rank>
+				<rank>0,3</rank>
 			</param>
 		</params>
 	</member>
@@ -92,7 +92,7 @@
 			<param>
 				<lessThan>false</lessThan>
 				<value>2</value>
-				<rank>0.4</rank>
+				<rank>0,4</rank>
 			</param>
 			<param>
 				<lessThan>false</lessThan>
@@ -107,7 +107,7 @@
 			<param>
 				<lessThan>true</lessThan>
 				<value>3</value>
-				<rank>0.6</rank>
+				<rank>0,6</rank>
 			</param>
 			<param>
 				<lessThan>false</lessThan>
@@ -121,27 +121,27 @@
 			<param>
 				<lessThan>false</lessThan>
 				<value>3</value>
-				<rank>0.4</rank>
+				<rank>0,4</rank>
 			</param>
 			<param>
 				<lessThan>true</lessThan>
 				<value>1</value>
-				<rank>0.1</rank>
+				<rank>0,1</rank>
 			</param>
 			<param>
 				<lessThan>true</lessThan>
 				<value>40</value>
-				<rank>0.1</rank>
+				<rank>0,1</rank>
 			</param>
 			<param>
 				<lessThan>true</lessThan>
 				<value>1</value>
-				<rank>0.2</rank>
+				<rank>0,2</rank>
 			</param>
 			<param>
 				<lessThan>true</lessThan>
 				<value>1000</value>
-				<rank>0.2</rank>
+				<rank>0,2</rank>
 			</param>
 		</params>
 	</member>

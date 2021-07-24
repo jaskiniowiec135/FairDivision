@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Xml.Linq;
 
@@ -52,14 +53,32 @@ namespace FairDivisionAlgorithm
             return result;
         }
 
-        public List<MemberObject> PrepareMembersFromDocument()
+        public List<MemberObject> GetMembersFromDocument()
         {
             List<MemberObject> result = new List<MemberObject>();
             XDocument members = ReadFromFile();
 
-            foreach (XElement node in members.DescendantNodes())
+            foreach (XElement node in members.Descendants().Where(x => x.Name == "member"))
             {
+                MemberObject member = new MemberObject("",
+                    new bool[5],
+                    new int[5],
+                    new double[5]);
 
+                member.Name = node.Attribute("name").Value;
+
+                for (int i = 0; i < node.Descendants().Where(x => x.Name == "param").Count(); i++)
+                {
+                    var n = node.Descendants().Where(x => x.Name == "param").ElementAt(i);
+
+                    Debug.WriteLine(n.Elements().ElementAt(2).Value);
+
+                    member.LessThan[i] = bool.Parse(n.Elements().ElementAt(0).Value);
+                    member.Values[i] = int.Parse(n.Elements().ElementAt(1).Value);
+                    member.Rank[i] = double.Parse(n.Elements().ElementAt(2).Value);
+                }
+
+                result.Add(member);
             }
 
             return result;

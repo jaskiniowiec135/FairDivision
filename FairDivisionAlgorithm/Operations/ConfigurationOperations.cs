@@ -10,13 +10,12 @@ namespace FairDivisionAlgorithm
 {
     public static class ConfigurationOperations
     {
-        public static Dictionary<string,string> GetConfiguration(string caseName)
+        public static Dictionary<string,string> GetConfiguration(string name)
         {
             Dictionary<string, string> result = new Dictionary<string, string>();
-            XDocument configuration = new XDocument();
 
             string path = Directory.GetCurrentDirectory();
-            path = Path.GetFullPath(Path.Combine(path, @"..\..\..\FairDivisionAlgorithm\\AppData\\", caseName));
+            path = Path.GetFullPath(Path.Combine(path, @"..\..\..\FairDivisionAlgorithm\\AppData\\", name));
 
             XMLHandler handler = new XMLHandler(path, "\\Configuration.xml");
 
