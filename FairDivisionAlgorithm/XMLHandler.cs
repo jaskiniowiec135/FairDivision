@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using System.Xml.Linq;
 
 namespace FairDivisionAlgorithm
@@ -19,50 +15,59 @@ namespace FairDivisionAlgorithm
             FileName = fileName;
         }
 
-        public void SaveToFile(Dictionary<string,string> dictionary, string[] attributeNames)
+        public void SaveConfigurationToFile(Dictionary<string, string> configuration)
         {
-            XDocument document = PrepareXMLFromDictionary(dictionary, attributeNames);
+            XDocument document = new XDocument(
+                new XElement("elements"));
+
+            foreach (var keyValuePair in configuration)
+            {
+                document.Descendants().First(x => x.Name == "elements").Add(new XElement("element",
+                    new XElement("name", keyValuePair.Key),
+                    new XElement("measureUnit", keyValuePair.Value)));
+            }
 
             document.Save(Path + FileName);
         }
 
-        public Dictionary<string, string> ReadFromFile()
+        public void SaveMembersToFile(List<MemberObject> members)
         {
-            Dictionary<string, string> result = new Dictionary<string, string>();
 
-            XDocument document = XDocument.Load(Path + FileName);
-
-            result = PrepareDictionaryFromXML(document);
-
-            return result;
         }
 
-        private static Dictionary<string,string> PrepareDictionaryFromXML(XDocument document)
+        public Dictionary<string, string> GetConfigurationFromDocument()
         {
             Dictionary<string, string> result = new Dictionary<string, string>();
+            XDocument configuration = ReadFromFile();
 
-            foreach(XElement node in document.DescendantNodes())
+            foreach (XElement node in configuration.Descendants())
             {
-                if(node.Name == "element")
+                if (node.Name == "element")
                 {
-                    result.Add(node.Attributes().ElementAt(0).Value, node.Attributes().ElementAt(1).Value);
+                    result.Add(node.Descendants().FirstOrDefault(x => x.Name == "name").Value,
+                        node.Descendants().FirstOrDefault(x => x.Name == "measureUnit").Value);
                 }
-                
             }
 
             return result;
         }
 
-        private static XDocument PrepareXMLFromDictionary(Dictionary<string,string> dictionary, string[] attributes)
+        public List<MemberObject> PrepareMembersFromDocument()
         {
-            XDocument result = new XDocument(
-                new XElement("elements"));
+            List<MemberObject> result = new List<MemberObject>();
+            XDocument members = ReadFromFile();
 
-            foreach(var kvpair in dictionary)
+            foreach (XElement node in members.DescendantNodes())
             {
-                result.Element("elements").Add(
-                    new XElement(name: "element", new XAttribute(attributes[0], kvpair.Key), new XAttribute(attributes[1], kvpair.Value)));
+
             }
+
+            return result;
+        }
+
+        private XDocument ReadFromFile()
+        {
+            XDocument result = XDocument.Load(Path + FileName);
 
             return result;
         }

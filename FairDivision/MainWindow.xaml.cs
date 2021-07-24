@@ -2,6 +2,7 @@
 using FairDivisionAlgorithm.DataContexts;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -60,6 +61,8 @@ namespace FairDivision
             }
         }
 
+        #region ConfigTab
+
         private void configComboBox_DropDownOpened(object sender, EventArgs e)
         {
             List<string> configs = ConfigurationOperations.GetAllConfigurations();
@@ -68,42 +71,6 @@ namespace FairDivision
             foreach (var c in configs)
             {
                 configComboBox.Items.Add(c);
-            }
-        }
-
-        private void membersConfigComboBox_DropDownOpened(object sender, EventArgs e)
-        {
-            List<string> configs = ConfigurationOperations.GetAllConfigurations();
-            membersConfigComboBox.Items.Clear();
-
-            foreach (var c in configs)
-            {
-                membersConfigComboBox.Items.Add(c);
-            }
-        }
-
-        private void membersConfigComboBox_DropDownClosed(object sender, EventArgs e)
-        {
-            membersContext.InitializeCollections();
-
-            string name = membersConfigComboBox.Text;
-
-            Dictionary<string, string> configuration = ConfigurationOperations.GetConfiguration(name);
-
-            for (int i = 0; i < configuration.Count; i++)
-            {
-                membersContext.MemberParams[i] = configuration.Keys.ElementAt(i);
-            }
-        }
-
-        private void objectsConfigComboBox_DropDownOpened(object sender, EventArgs e)
-        {
-            List<string> configs = ConfigurationOperations.GetAllConfigurations();
-            objectsConfigComboBox.Items.Clear();
-
-            foreach (var c in configs)
-            {
-                objectsConfigComboBox.Items.Add(c);
             }
         }
 
@@ -143,6 +110,42 @@ namespace FairDivision
             string name = configComboBox.Text;
 
             ConfigurationOperations.Remove(name);
+        }
+
+        #endregion
+
+        #region MemberTab
+
+        private void membersConfigComboBox_DropDownOpened(object sender, EventArgs e)
+        {
+            List<string> configs = ConfigurationOperations.GetAllConfigurations();
+            membersConfigComboBox.Items.Clear();
+
+            foreach (var c in configs)
+            {
+                membersConfigComboBox.Items.Add(c);
+            }
+        }
+
+        private void membersConfigComboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            membersContext.InitializeCollections();
+
+            string name = membersConfigComboBox.Text;
+
+            Dictionary<string, string> configuration = ConfigurationOperations.GetConfiguration(name);
+
+            for (int i = 0; i < configuration.Count; i++)
+            {
+                membersContext.MemberParams[i] = configuration.Keys.ElementAt(i);
+            }
+
+            List<MemberObject> members = MemberOperations.GetMembers(name);
+
+            foreach (var item in members)
+            {
+                membersContext.Members.Add(item);
+            }
         }
 
         private void memberSave_Click(object sender, RoutedEventArgs e)

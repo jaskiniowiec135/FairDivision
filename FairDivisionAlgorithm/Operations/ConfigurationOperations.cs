@@ -4,6 +4,7 @@ using System.Linq;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace FairDivisionAlgorithm
 {
@@ -12,6 +13,7 @@ namespace FairDivisionAlgorithm
         public static Dictionary<string,string> GetConfiguration(string caseName)
         {
             Dictionary<string, string> result = new Dictionary<string, string>();
+            XDocument configuration = new XDocument();
 
             string path = Directory.GetCurrentDirectory();
             path = Path.GetFullPath(Path.Combine(path, @"..\..\..\FairDivisionAlgorithm\\AppData\\", caseName));
@@ -20,7 +22,7 @@ namespace FairDivisionAlgorithm
 
             if(File.Exists(path + "\\Configuration.xml"))
             {
-                result = handler.ReadFromFile();
+                result = handler.GetConfigurationFromDocument();
             }
 
             return result;
@@ -30,8 +32,6 @@ namespace FairDivisionAlgorithm
         {
             string path = Directory.GetCurrentDirectory();
             path = Path.GetFullPath(Path.Combine(path, @"..\..\..\FairDivisionAlgorithm\\AppData\\", caseName));
-            string[] attributeNames = new string[] { "name", "measureUnit" };
-
 
             if(Directory.Exists(path))
             {
@@ -47,7 +47,7 @@ namespace FairDivisionAlgorithm
 
             XMLHandler handler = new XMLHandler(path, "\\Configuration.xml");
 
-            handler.SaveToFile(config, attributeNames);
+            handler.SaveConfigurationToFile(config);
         }
 
         public static void Remove(string caseName)

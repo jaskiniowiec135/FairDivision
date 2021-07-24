@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<elements>
-  <element name="bathroom" measureUnit="number" />
-  <element name="swimmingPool" measureUnit="number" />
-  <element name="garden" measureUnit="squareMeters" />
-</elements>
