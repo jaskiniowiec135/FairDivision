@@ -59,6 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AppData\ExampleConfiguration\Configuration.xml" />
+    <Content Include="AppData\ExampleConfiguration\Members.xml" />
+    <Content Include="AppData\ExampleConfiguration\Objects.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
