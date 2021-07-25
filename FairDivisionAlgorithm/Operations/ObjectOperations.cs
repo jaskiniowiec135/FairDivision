@@ -1,30 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.IO;
 
 namespace FairDivisionAlgorithm
 {
     public class ObjectOperations
     {
-        private List<DivisionObject> ListOfObjects;
+        static string fileName = "\\Objects.xml";
 
-        public void AddObject(DivisionObject member)
+        public static List<DivisionObject> GetObjects(string name)
         {
-            ListOfObjects.Add(member);
-        }
+            List<DivisionObject> result = new List<DivisionObject>();
 
-        public void ModifyObject(DivisionObject divisionObject)
-        {
-            int objectIndex = ListOfObjects.FindIndex(o => o.Name == divisionObject.Name);
-            ListOfObjects[objectIndex] = divisionObject;
-        }
+            string path = Directory.GetCurrentDirectory();
+            path = Path.GetFullPath(Path.Combine(path, @"..\..\..\FairDivisionAlgorithm\\AppData\\", name));
 
-        public void RemoveObject(DivisionObject divisionObject)
-        {
-            int objectIndex = ListOfObjects.FindIndex(o => o.Name == divisionObject.Name);
-            ListOfObjects.RemoveAt(objectIndex);
+            XMLHandler handler = new XMLHandler(path, fileName);
+
+            if (File.Exists(path + fileName))
+            {
+                result = handler.GetObjectsFromDocument();
+            }
+
+            return result;
         }
 
         public List<DivisionObject> GetMembers()

@@ -7,7 +7,7 @@
         xmlns:converters="clr-namespace:FairDivision.Converters"
         xmlns:datacontexts="clr-namespace:FairDivisionAlgorithm.DataContexts;assembly=FairDivisionAlgorithm"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="380">
+        Title="MainWindow" Height="580" Width="380">
     <Window.Resources>
         <converters:OppositeBooleanConverter x:Key="oppositeBooleanConverter"/>
     </Window.Resources>
@@ -83,35 +83,35 @@
                     </Grid.RowDefinitions>
                     <ComboBox x:Name="membersConfigComboBox" ToolTip="Select configuration" VerticalAlignment="Top" DropDownOpened="membersConfigComboBox_DropDownOpened" DropDownClosed="membersConfigComboBox_DropDownClosed" Margin="10" Grid.ColumnSpan="2" Grid.Row="0"/>
                     <ComboBox x:Name="membersComboBox" ToolTip="Member name" IsEditable="True" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="1" Margin="10" DropDownOpened="membersComboBox_DropDownOpened"  DropDownClosed="membersComboBox_DropDownClosed"/>
-                    <TextBox Text="{Binding MemberParams[0]}" ToolTip="Parameter 1" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Height="34"/>
+                    <Label Content="{Binding MemberParams[0]}" ToolTip="Parameter 1" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2" Margin="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="34"/>
                     <Grid Grid.Row="2" Grid.Column="1">
                         <RadioButton IsChecked="{Binding Path=CurrentMember.LessThan[0]}" Content="&lt;=" HorizontalAlignment="Left" Margin="19,12,0,0" VerticalAlignment="Top"/>
                         <RadioButton IsChecked="{Binding Path=CurrentMember.LessThan[0], Converter={StaticResource oppositeBooleanConverter}}" Content=">=" HorizontalAlignment="Left" Margin="19,32,0,0" VerticalAlignment="Top"/>
                     </Grid>
                     <TextBox Text="{Binding CurrentMember.Values[0]}" ToolTip="Desired value 1" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="2"/>
                     <TextBox Text="{Binding CurrentMember.Rank[0]}" ToolTip="Rank 1" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="3" Grid.Row="2"/>
-                    <TextBox Text="{Binding MemberParams[1]}" ToolTip="Parameter 2" Margin="10" VerticalContentAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Grid.Column="0" Grid.Row="3" Height="34"/>
+                    <Label Content="{Binding MemberParams[1]}" ToolTip="Parameter 2" Margin="10" VerticalContentAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="3" Height="34"/>
                     <Grid Grid.Column="1" Grid.Row="3">
                         <RadioButton IsChecked="{Binding Path=CurrentMember.LessThan[1]}"  Content="&lt;=" HorizontalAlignment="Left" Margin="19,12,0,0" VerticalAlignment="Top"/>
                         <RadioButton IsChecked="{Binding Path=CurrentMember.LessThan[1], Converter={StaticResource oppositeBooleanConverter}}"  Content=">=" HorizontalAlignment="Left" Margin="19,32,0,0" VerticalAlignment="Top"/>
                     </Grid>
                     <TextBox Text="{Binding CurrentMember.Values[1]}" ToolTip="Desired value 2" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="3"/>
                     <TextBox Text="{Binding CurrentMember.Rank[1]}" ToolTip="Rank 2" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="3" Grid.Row="3"/>
-                    <TextBox Text="{Binding MemberParams[2]}" ToolTip="Parameter 3" Margin="10" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="0" Grid.Row="4" Height="34"/>
+                    <Label Content="{Binding MemberParams[2]}" ToolTip="Parameter 3" Margin="10" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="4" Height="34"/>
                     <Grid Grid.Column="1" Grid.Row="4">
                         <RadioButton IsChecked="{Binding Path=CurrentMember.LessThan[2]}"  Content="&lt;=" HorizontalAlignment="Left" Margin="19,10,0,0" VerticalAlignment="Top" />
                         <RadioButton IsChecked="{Binding Path=CurrentMember.LessThan[2], Converter={StaticResource oppositeBooleanConverter}}"  Content=">=" HorizontalAlignment="Left" Margin="19,29,0,0" VerticalAlignment="Top"/>
                     </Grid>
                     <TextBox Text="{Binding CurrentMember.Values[2]}" ToolTip="Desired value 3" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="4"/>
                     <TextBox Text="{Binding CurrentMember.Rank[2]}" ToolTip="Rank 3" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="3" Grid.Row="4"/>
-                    <TextBox Text="{Binding MemberParams[3]}" ToolTip="Parameter 4" Margin="10" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="0" Grid.Row="5" Height="33"/>
+                    <Label Content="{Binding MemberParams[3]}" ToolTip="Parameter 4" Margin="10" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="5" Height="33"/>
                     <Grid Grid.Column="1" Grid.Row="5">
                         <RadioButton IsChecked="{Binding Path=CurrentMember.LessThan[3]}"  Content="&lt;=" HorizontalAlignment="Left" Margin="19,10,0,0" VerticalAlignment="Top"/>
                         <RadioButton IsChecked="{Binding Path=CurrentMember.LessThan[3], Converter={StaticResource oppositeBooleanConverter}}"  Content=">=" HorizontalAlignment="Left" Margin="19,28,0,0" VerticalAlignment="Top"/>
                     </Grid>
                     <TextBox Text="{Binding CurrentMember.Values[3]}" ToolTip="Desired value 4" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="5"/>
                     <TextBox Text="{Binding CurrentMember.Rank[3]}" ToolTip="Rank 4" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="3" Grid.Row="5"/>
-                    <TextBox Text="{Binding MemberParams[4]}" ToolTip="Parameter 5" Margin="10" VerticalAlignment="Top" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="0" Grid.Row="6" Height="33"/>
+                    <Label Content="{Binding MemberParams[4]}" ToolTip="Parameter 5" Margin="10" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="6" Height="33"/>
                     <Grid Grid.Column="1" Grid.Row="6">
                         <RadioButton IsChecked="{Binding Path=CurrentMember.LessThan[4]}"  Content="&lt;=" HorizontalAlignment="Left" Margin="19,10,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="6"/>
                         <RadioButton IsChecked="{Binding Path=CurrentMember.LessThan[4], Converter={StaticResource oppositeBooleanConverter}}"  Content=">=" HorizontalAlignment="Left" Margin="19,28,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="6"/>
@@ -149,12 +149,13 @@
                 </Grid>
             </TabItem>
             <TabItem x:Name="ObjectsTab" Header="Objects">
-                <Grid>
+                <Grid d:DataContext="{d:DesignInstance Type=datacontexts:ObjectsContext}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="20*"/>
                         <RowDefinition Height="20*"/>
                         <RowDefinition Height="20*"/>
                         <RowDefinition Height="30*"/>
@@ -164,43 +165,45 @@
                         <RowDefinition Height="30*"/>
                         <RowDefinition Height="30*"/>
                     </Grid.RowDefinitions>
-                    <ComboBox x:Name="objectsConfigComboBox" ToolTip="Select configuration" VerticalAlignment="Top" DropDownOpened="objectsConfigComboBox_DropDownOpened" Margin="10" Grid.Column="0" Grid.Row="0"/>
-                    <ComboBox x:Name="objectsComboBox" ToolTip="Object name" IsEditable="True" Margin="10" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1"/>
-                    <Label x:Name="lblObjectsParam1" Margin="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="2"/>
-                    <TextBox x:Name="txtObjectParam1" ToolTip="Parameter 1 value" Margin="10" Height="34" VerticalContentAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Grid.Column="1" Grid.Row="2"/>
-                    <Label x:Name="lblObjectsParam2" Margin="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="3"/>
-                    <TextBox x:Name="txtObjectParam2" ToolTip="Parameter 2 value" Margin="10" Height="34" VerticalContentAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Grid.Column="1" Grid.Row="3"/>
-                    <Label x:Name="lblObjectsParam3" Margin="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="4"/>
-                    <TextBox x:Name="txtObjectParam3" ToolTip="Parameter 3 value" Margin="10" Height="34" VerticalContentAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Grid.Column="1" Grid.Row="4"/>
-                    <Label x:Name="lblObjectsParam4" Margin="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="5"/>
-                    <TextBox x:Name="txtObjectParam4" ToolTip="Parameter 4 value" Margin="10" Height="34" VerticalContentAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Grid.Column="1" Grid.Row="5"/>
-                    <Label x:Name="lblObjectsParam5" Margin="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="6"/>
-                    <TextBox x:Name="txtObjectParam5" ToolTip="Parameter 5 value" Margin="10" Height="34" VerticalContentAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Grid.Column="1" Grid.Row="6"/>
-                    <Grid Grid.ColumnSpan="3" Grid.Row="7">
+                    <ComboBox x:Name="objectsConfigComboBox" ToolTip="Select configuration" VerticalAlignment="Top" DropDownOpened="objectsConfigComboBox_DropDownOpened" DropDownClosed="objectsConfigComboBox_DropDownClosed" Margin="10" Grid.Column="0" Grid.Row="0"/>
+                    <ComboBox x:Name="objectsNameComboBox" ToolTip="Object name" IsEditable="True" Margin="10" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1" DropDownOpened="objectsComboBox_DropDownOpened" DropDownClosed="objectsComboBox_DropDownClosed"/>
+                    <ComboBox x:Name="objectsOwnerComboBox" ToolTip="Owner name" IsEditable="True" Margin="10" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2"/>
+                    <TextBox Text="{Binding CurrentObject.Value}" ToolTip="Object value" Margin="10" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2"/>
+                    <Label Content="{Binding DivisionObjectParams[0]}" Margin="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="3"/>
+                    <TextBox Text="{Binding CurrentObject.ParametersValues[0]}" ToolTip="Parameter 1 value" Margin="10" Height="34" VerticalContentAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Grid.Column="1" Grid.Row="3"/>
+                    <Label Content="{Binding DivisionObjectParams[1]}" Margin="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="4"/>
+                    <TextBox Text="{Binding CurrentObject.ParametersValues[1]}" ToolTip="Parameter 2 value" Margin="10" Height="34" VerticalContentAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Grid.Column="1" Grid.Row="4"/>
+                    <Label Content="{Binding DivisionObjectParams[2]}" Margin="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="5"/>
+                    <TextBox Text="{Binding CurrentObject.ParametersValues[2]}" ToolTip="Parameter 3 value" Margin="10" Height="34" VerticalContentAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Grid.Column="1" Grid.Row="5"/>
+                    <Label Content="{Binding DivisionObjectParams[3]}" Margin="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="6"/>
+                    <TextBox Text="{Binding CurrentObject.ParametersValues[3]}" ToolTip="Parameter 4 value" Margin="10" Height="34" VerticalContentAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Grid.Column="1" Grid.Row="6"/>
+                    <Label Content="{Binding DivisionObjectParams[4]}" Margin="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="7"/>
+                    <TextBox Text="{Binding CurrentObject.ParametersValues[4]}" ToolTip="Parameter 5 value" Margin="10" Height="34" VerticalContentAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Grid.Column="1" Grid.Row="7"/>
+                    <Grid Grid.ColumnSpan="3" Grid.Row="8">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="objectsGet" Margin="10" Height="44" VerticalAlignment="Top" Grid.Column="0">
+                        <Button x:Name="objectSave" Margin="10" Height="44" VerticalAlignment="Top" Grid.Column="0">
                             <Button.Content>
-                                <TextBlock Text="Get object" TextAlignment="Center" TextWrapping="Wrap" />
+                                <TextBlock Text="Save object" TextAlignment="Center" TextWrapping="Wrap" />
                             </Button.Content>
                         </Button>
-                        <Button x:Name="objectsAdd" Margin="10" Height="44" VerticalAlignment="Top" Grid.Column="1">
-                            <Button.Content>
-                                <TextBlock  Text="Add object" TextAlignment="Center"  TextWrapping="Wrap"/>
-                            </Button.Content>
-                        </Button>
-                        <Button x:Name="objectsRemove" Margin="10" Height="44" VerticalAlignment="Top" Grid.Column="2">
+                        <Button x:Name="objectRemove" Margin="10" Height="44" VerticalAlignment="Top" Grid.Column="1">
                             <Button.Content>
                                 <TextBlock  Text="Remove object" TextAlignment="Center"  TextWrapping="Wrap"/>
                             </Button.Content>
                         </Button>
-                        <Button x:Name="objectsSave" Margin="10" Height="44" VerticalAlignment="Top" Grid.Column="3">
+                        <Button x:Name="objectsSave" Margin="10" Height="44" VerticalAlignment="Top" Grid.Column="2">
                             <Button.Content>
                                 <TextBlock  Text="Save objects" TextAlignment="Center"  TextWrapping="Wrap"/>
+                            </Button.Content>
+                        </Button>
+                        <Button x:Name="objectsRemove" Margin="10" Height="44" VerticalAlignment="Top" Grid.Column="3">
+                            <Button.Content>
+                                <TextBlock  Text="Remove objects" TextAlignment="Center"  TextWrapping="Wrap"/>
                             </Button.Content>
                         </Button>
                     </Grid>

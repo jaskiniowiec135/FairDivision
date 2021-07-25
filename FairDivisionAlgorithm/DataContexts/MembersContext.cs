@@ -66,7 +66,7 @@ namespace FairDivisionAlgorithm.DataContexts
 
         public void RemoveMember(string name)
         {
-            MemberObject memberToRemove = members.First(x => x.Name == name);
+            MemberObject memberToRemove = Members.First(x => x.Name == name);
 
             Members.Remove(memberToRemove);
         }
@@ -93,11 +93,6 @@ namespace FairDivisionAlgorithm.DataContexts
             return result;
         }
 
-        void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         public void InitializeCollections()
         {
             Members = new ObservableCollection<MemberObject>();
@@ -108,6 +103,11 @@ namespace FairDivisionAlgorithm.DataContexts
             MemberParams.Add("");
             MemberParams.Add("");
             MemberParams.Add("");
+        }
+
+        void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

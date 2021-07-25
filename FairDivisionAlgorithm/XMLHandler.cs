@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Xml.Linq;
@@ -57,7 +58,7 @@ namespace FairDivisionAlgorithm
         public Dictionary<string, string> GetConfigurationFromDocument()
         {
             Dictionary<string, string> result = new Dictionary<string, string>();
-            XDocument configuration = ReadFromFile();
+            XDocument configuration = XDocument.Load(Path + FileName);
 
             foreach (XElement node in configuration.Descendants())
             {
@@ -74,7 +75,7 @@ namespace FairDivisionAlgorithm
         public List<MemberObject> GetMembersFromDocument()
         {
             List<MemberObject> result = new List<MemberObject>();
-            XDocument members = ReadFromFile();
+            XDocument members = XDocument.Load(Path + FileName);
 
             foreach (XElement node in members.Descendants().Where(x => x.Name == "member"))
             {
@@ -100,9 +101,28 @@ namespace FairDivisionAlgorithm
             return result;
         }
 
-        private XDocument ReadFromFile()
+        public List<DivisionObject> GetObjectsFromDocument()
         {
-            XDocument result = XDocument.Load(Path + FileName);
+            List<DivisionObject> result = new List<DivisionObject>();
+            XDocument objects = XDocument.Load(Path + FileName);
+
+            foreach (XElement node in objects.Descendants().Where(x => x.Name == "object"))
+            {
+                DivisionObject divisionObject = new DivisionObject(
+                    "", "", 0, new int[5]);
+
+                divisionObject.ObjectName = node.Descendants().FirstOrDefault(x => x.Name == "name").Value;
+                divisionObject.OwnerName = node.Descendants().FirstOrDefault(x => x.Name == "owner").Value;
+                divisionObject.Value = int.Parse(node.Descendants().FirstOrDefault(x => x.Name == "value").Value);
+
+                for (int i = 0; i < node.Descendants().Where(x => x.Name == "param").Count(); i++)
+                {
+                    divisionObject.ParametersValues[i] = int.Parse(node.Descendants().Where(
+                        x => x.Name == "param").ElementAt(i).Value);
+                }
+
+                result.Add(divisionObject);
+            }
 
             return result;
         }
