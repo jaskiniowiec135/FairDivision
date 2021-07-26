@@ -24,9 +24,40 @@ namespace FairDivisionAlgorithm
             return result;
         }
 
-        public List<DivisionObject> GetMembers()
+        public static void Save(List<DivisionObject> objects, string name)
         {
-            return ListOfObjects;
+            string path = Directory.GetCurrentDirectory();
+            path = Path.GetFullPath(Path.Combine(path, @"..\..\..\FairDivisionAlgorithm\\AppData\\", name));
+
+            if (Directory.Exists(path))
+            {
+                if (File.Exists(path + fileName))
+                {
+                    File.Delete(path + fileName);
+                }
+            }
+            else
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            XMLHandler handler = new XMLHandler(path, fileName);
+
+            handler.SaveObjectsToFile(objects);
+        }
+
+        public static void Remove(string name)
+        {
+            string path = Directory.GetCurrentDirectory();
+            path = Path.GetFullPath(Path.Combine(path, @"..\..\..\FairDivisionAlgorithm\\AppData\\", name));
+
+            if (Directory.Exists(path))
+            {
+                if (File.Exists(path + fileName))
+                {
+                    File.Delete(path + fileName);
+                }
+            }
         }
     }
 }

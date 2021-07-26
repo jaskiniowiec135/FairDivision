@@ -216,6 +216,8 @@ namespace FairDivision
 
         #endregion
 
+        #region ObjectsTab
+
         private void objectsConfigComboBox_DropDownOpened(object sender, EventArgs e)
         {
             List<string> configs = ConfigurationOperations.GetAllConfigurations();
@@ -240,20 +242,90 @@ namespace FairDivision
 
             List<DivisionObject> objects = ObjectOperations.GetObjects(name);
 
-            objectsOwnerComboBox.Items.Clear();
-
-            objectsOwnerComboBox.Items.Add("");
+            objectsContext.DivisionObjects.Clear();
 
             foreach (var item in objects)
             {
                 objectsContext.DivisionObjects.Add(item);
+            }
 
-                if(item.OwnerName != "")
-                {
-                    objectsOwnerComboBox.Items.Add(item.OwnerName);
-                }
+            objectsOwnerComboBox.Items.Clear();
+            objectsOwnerComboBox.Items.Add("");
+
+            List<string> memberNames = MemberOperations.GetMembers(name).Select(x => x.Name.ToString()).ToList();
+
+            foreach(var member in memberNames)
+            {
+                objectsOwnerComboBox.Items.Add(member);
             }
         }
 
+        private void objectsComboBox_DropDownOpened(object sender, EventArgs e)
+        {
+            objectsNameComboBox.Items.Clear();
+
+            foreach (var m in objectsContext.DivisionObjects)
+            {
+                objectsNameComboBox.Items.Add(m.ObjectName);
+            }
+        }
+
+        private void objectsComboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            var name = objectsNameComboBox.SelectedItem;
+
+            if (name != null)
+            {
+                objectsContext.CurrentObject = objectsContext.ReturnSelectedObject(name.ToString());
+            }
+
+            objectsOwnerComboBox.SelectedItem = objectsContext.CurrentObject.OwnerName;
+        }
+
+        private void objectSave_Click(object sender, RoutedEventArgs e)
+        {
+            int numberOfParams = objectsContext.DivisionObjectParams.Count;
+
+            DivisionObject divisionObject = new DivisionObject(
+                "", "", 0, new int[5]);
+
+            divisionObject.ObjectName = objectsNameComboBox.Text;
+            divisionObject.OwnerName = objectsOwnerComboBox.Text;
+            divisionObject.Value = objectsContext.CurrentObject.Value;
+
+            for (int i = 0; i < numberOfParams; i++)
+            {
+                divisionObject.ParametersValues[i] = objectsContext.CurrentObject.ParametersValues[i];
+            }
+
+            objectsContext.SaveObject(divisionObject);
+        }
+
+        private void objectRemove_Click(object sender, RoutedEventArgs e)
+        {
+            var name = objectsNameComboBox.SelectedItem;
+
+            if(name != null && objectsContext.DivisionObjects.Any(
+                x => x.ObjectName == name.ToString()))
+            {
+                objectsContext.RemoveObject(name.ToString());
+
+                objectsNameComboBox.Text = "";
+                objectsContext.CurrentObject = new DivisionObject();
+            }
+        }
+
+        private void objectsSave_Click(object sender, RoutedEventArgs e)
+        {
+            ObjectOperations.Save(objectsContext.DivisionObjects.ToList(),
+                objectsConfigComboBox.SelectedItem.ToString());
+        }
+
+        private void objectsRemove_Click(object sender, RoutedEventArgs e)
+        {
+            ObjectOperations.Remove(objectsConfigComboBox.Text);
+        }
+
+        #endregion
     }
 }

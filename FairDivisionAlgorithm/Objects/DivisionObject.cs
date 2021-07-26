@@ -40,7 +40,7 @@ namespace FairDivisionAlgorithm
             set { parametersValues = value; OnPropertyChanged("ParametersValues"); }
         }
 
-        public DivisionObject(string obName, string owName, int v, int[] pValues)
+        public DivisionObject(string obName = null, string owName = null, int v = 0, int[] pValues = null)
         {
             ObjectName = obName;
             OwnerName = owName;

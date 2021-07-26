@@ -186,22 +186,22 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="objectSave" Margin="10" Height="44" VerticalAlignment="Top" Grid.Column="0">
+                        <Button x:Name="objectSave" Margin="10" Height="44" VerticalAlignment="Top" Grid.Column="0" Click="objectSave_Click">
                             <Button.Content>
                                 <TextBlock Text="Save object" TextAlignment="Center" TextWrapping="Wrap" />
                             </Button.Content>
                         </Button>
-                        <Button x:Name="objectRemove" Margin="10" Height="44" VerticalAlignment="Top" Grid.Column="1">
+                        <Button x:Name="objectRemove" Margin="10" Height="44" VerticalAlignment="Top" Grid.Column="1" Click="objectRemove_Click">
                             <Button.Content>
                                 <TextBlock  Text="Remove object" TextAlignment="Center"  TextWrapping="Wrap"/>
                             </Button.Content>
                         </Button>
-                        <Button x:Name="objectsSave" Margin="10" Height="44" VerticalAlignment="Top" Grid.Column="2">
+                        <Button x:Name="objectsSave" Margin="10" Height="44" VerticalAlignment="Top" Grid.Column="2" Click="objectsSave_Click">
                             <Button.Content>
                                 <TextBlock  Text="Save objects" TextAlignment="Center"  TextWrapping="Wrap"/>
                             </Button.Content>
                         </Button>
-                        <Button x:Name="objectsRemove" Margin="10" Height="44" VerticalAlignment="Top" Grid.Column="3">
+                        <Button x:Name="objectsRemove" Margin="10" Height="44" VerticalAlignment="Top" Grid.Column="3" Click="objectsRemove_Click">
                             <Button.Content>
                                 <TextBlock  Text="Remove objects" TextAlignment="Center"  TextWrapping="Wrap"/>
                             </Button.Content>

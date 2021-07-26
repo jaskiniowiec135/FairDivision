@@ -35,6 +35,38 @@ namespace FairDivisionAlgorithm.DataContexts
 
             InitializeCollections();
         }
+
+        public void SaveObject(DivisionObject divisionObject)
+        {
+            if (!DivisionObjects.Any(x => x.ObjectName == divisionObject.ObjectName))
+            {
+                AddObject(divisionObject);
+            }
+            else
+            {
+                UpdateObject(divisionObject);
+            }
+        }
+
+        private void AddObject(DivisionObject divisionObject)
+        {
+            DivisionObjects.Add(divisionObject);
+        }
+
+        private void UpdateObject(DivisionObject divisionObject)
+        {
+            DivisionObject objectToUpdate = DivisionObjects.First(x => x.ObjectName == divisionObject.ObjectName);
+            int index = DivisionObjects.IndexOf(objectToUpdate);
+            DivisionObjects[index] = CurrentObject;
+        }
+
+        public void RemoveObject(string name)
+        {
+            DivisionObject objectToRemove = DivisionObjects.First(x => x.ObjectName == name);
+
+            DivisionObjects.Remove(objectToRemove);
+        }
+
         public DivisionObject ReturnSelectedObject(string name)
         {
             DivisionObject result = new DivisionObject(

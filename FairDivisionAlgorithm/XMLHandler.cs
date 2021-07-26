@@ -55,6 +55,29 @@ namespace FairDivisionAlgorithm
             document.Save(Path + FileName);
         }
 
+        public void SaveObjectsToFile(List<DivisionObject> divisionObjects)
+        {
+            XDocument document = new XDocument(
+                new XElement("objects"));
+
+            foreach (DivisionObject divisionObject in divisionObjects)
+            {
+                document.Descendants().First(x => x.Name == "objects").Add(new XElement("object",
+                    new XElement("name", divisionObject.ObjectName),
+                    new XElement("owner", divisionObject.OwnerName),
+                    new XElement("value", divisionObject.Value),
+                    new XElement("params")));
+
+                for (int i = 0; i < divisionObject.ParametersValues.Length; i++)
+                {
+                    document.Descendants().Last(x => x.Name == "params")
+                        .Add(new XElement("param", divisionObject.ParametersValues[i]));
+                }
+            }
+
+            document.Save(Path + FileName);
+        }
+
         public Dictionary<string, string> GetConfigurationFromDocument()
         {
             Dictionary<string, string> result = new Dictionary<string, string>();
