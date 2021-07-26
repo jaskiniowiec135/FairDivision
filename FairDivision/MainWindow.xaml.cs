@@ -129,7 +129,8 @@ namespace FairDivision
 
         private void membersConfigComboBox_DropDownClosed(object sender, EventArgs e)
         {
-            membersContext.InitializeCollections();
+            membersComboBox.Items.Clear();
+            membersContext.InitializeObjects();
 
             string name = membersConfigComboBox.Text;
 
@@ -173,11 +174,13 @@ namespace FairDivision
             int numberOfParams = membersContext.MemberParams.Count;
 
             MemberObject member = new MemberObject("",
+                0,
                 new bool[numberOfParams],
                 new int[numberOfParams],
                 new double[numberOfParams]);
 
             member.Name = membersComboBox.Text;
+            member.Budget = membersContext.CurrentMember.Budget;
 
             for (int i = 0; i < numberOfParams; i++)
             {

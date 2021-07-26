@@ -32,12 +32,7 @@ namespace FairDivisionAlgorithm.DataContexts
 
         public MembersContext()
         {
-            CurrentMember = new MemberObject("",
-                new bool[5],
-                new int[5],
-                new double[5]);
-
-            InitializeCollections();
+            InitializeObjects();
         }
 
         public void SaveMember(MemberObject member)
@@ -74,6 +69,7 @@ namespace FairDivisionAlgorithm.DataContexts
         public MemberObject ReturnSelectedCustomer(string name)
         {
             MemberObject result = new MemberObject("",
+                    0,
                     new bool[5],
                     new int[5],
                     new double[5]);
@@ -82,6 +78,7 @@ namespace FairDivisionAlgorithm.DataContexts
                 x => x.Name == name.ToString());
 
             result.Name = name.ToString();
+            result.Budget = selected.Budget;
 
             for (int i = 0; i < MemberParams.Count; i++)
             {
@@ -93,8 +90,14 @@ namespace FairDivisionAlgorithm.DataContexts
             return result;
         }
 
-        public void InitializeCollections()
+        public void InitializeObjects()
         {
+            CurrentMember = new MemberObject("",
+                0,
+                new bool[5],
+                new int[5],
+                new double[5]);
+
             Members = new ObservableCollection<MemberObject>();
             MemberParams = new ObservableCollection<string>();
 

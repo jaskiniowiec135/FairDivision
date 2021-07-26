@@ -41,6 +41,7 @@ namespace FairDivisionAlgorithm
             {
                 document.Descendants().First(x => x.Name == "members").Add(new XElement("member",
                     new XAttribute("name", member.Name),
+                    new XElement("budget", member.Budget),
                     new XElement("params")));
 
                 for (int i = 0; i < member.LessThan.Length; i++)
@@ -103,11 +104,13 @@ namespace FairDivisionAlgorithm
             foreach (XElement node in members.Descendants().Where(x => x.Name == "member"))
             {
                 MemberObject member = new MemberObject("",
+                    0,
                     new bool[5],
                     new int[5],
                     new double[5]);
 
                 member.Name = node.Attribute("name").Value;
+                member.Budget = int.Parse(node.Descendants().First(x => x.Name == "budget").Value);
 
                 for (int i = 0; i < node.Descendants().Where(x => x.Name == "param").Count(); i++)
                 {

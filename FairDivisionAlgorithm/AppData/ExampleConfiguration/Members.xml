@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <members>
   <member name="Wojtek">
+    <budget>300000</budget>
     <params>
       <param>
         <lessThan>true</lessThan>
@@ -30,6 +31,7 @@
     </params>
   </member>
   <member name="Piotrek">
+    <budget>800000</budget>
     <params>
       <param>
         <lessThan>false</lessThan>
@@ -59,6 +61,7 @@
     </params>
   </member>
   <member name="Rafał">
+    <budget>400000</budget>
     <params>
       <param>
         <lessThan>true</lessThan>
@@ -88,6 +91,7 @@
     </params>
   </member>
   <member name="Grzesiek">
+    <budget>900000</budget>
     <params>
       <param>
         <lessThan>false</lessThan>
@@ -117,6 +121,7 @@
     </params>
   </member>
   <member name="Kuba">
+    <budget>700000</budget>
     <params>
       <param>
         <lessThan>false</lessThan>
