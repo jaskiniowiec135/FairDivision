@@ -45,6 +45,7 @@
     <Compile Include="DataContexts\ConfigurationContext.cs" />
     <Compile Include="DataContexts\MembersContext.cs" />
     <Compile Include="DataContexts\ObjectsContext.cs" />
+    <Compile Include="MemberRanks.cs" />
     <Compile Include="Operations\ObjectOperations.cs" />
     <Compile Include="Operations\MemberOperations.cs" />
     <Compile Include="Operations\ConfigurationOperations.cs" />

@@ -212,8 +212,8 @@
             </TabItem>
             <TabItem Header="Algorithm">
                 <Grid>
-                    <ComboBox x:Name="algorithmComboBox" ToolTip="Select configuration to proceed" Margin="27,41,170,0" Height="44" VerticalAlignment="Top"/>
-                    <Button x:Name="algorithmRun" Margin="214,41,30,0" Height="44" VerticalAlignment="Top">
+                    <ComboBox x:Name="algorithmComboBox" ToolTip="Select configuration to proceed" Margin="27,41,170,0" Height="44" VerticalAlignment="Top" DropDownOpened="algorithmComboBox_DropDownOpened" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <Button x:Name="algorithmRun" Margin="214,41,30,0" Height="44" VerticalAlignment="Top" Click="algorithmRun_Click">
                         <Button.Content>
                             <TextBlock  Text="Run algorithm" TextAlignment="Center"  TextWrapping="Wrap"/>
                         </Button.Content>

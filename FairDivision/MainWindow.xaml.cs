@@ -329,6 +329,34 @@ namespace FairDivision
             ObjectOperations.Remove(objectsConfigComboBox.Text);
         }
 
+
+        #endregion
+
+        #region Algorithm
+
+        private void algorithmComboBox_DropDownOpened(object sender, EventArgs e)
+        {
+            List<string> configs = ConfigurationOperations.GetAllConfigurations();
+            algorithmComboBox.Items.Clear();
+
+            foreach (var c in configs)
+            {
+                algorithmComboBox.Items.Add(c);
+            }
+        }
+
+        private void algorithmRun_Click(object sender, RoutedEventArgs e)
+        {
+            string name = algorithmComboBox.Text;
+
+            Algorithm algorithm = new Algorithm(
+                ConfigurationOperations.GetConfiguration(name),
+                MemberOperations.GetMembers(name),
+                ObjectOperations.GetObjects(name));
+
+            algorithm.Proceed();
+        }
+
         #endregion
     }
 }
