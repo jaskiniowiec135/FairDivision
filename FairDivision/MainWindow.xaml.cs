@@ -354,7 +354,14 @@ namespace FairDivision
                 MemberOperations.GetMembers(name),
                 ObjectOperations.GetObjects(name));
 
-            algorithm.Proceed();
+            Dictionary<string,string> returnedMembers = algorithm.Proceed();
+
+            MessageBox.Show($"Result of algorithm run:\n" +
+                $"{returnedMembers.Keys.ElementAt(0)} = {returnedMembers.Values.ElementAt(0)}\n" +
+                $"{returnedMembers.Keys.ElementAt(1)} = {returnedMembers.Values.ElementAt(1)}\n" +
+                $"{returnedMembers.Keys.ElementAt(2)} = {returnedMembers.Values.ElementAt(2)}\n" +
+                $"{returnedMembers.Keys.ElementAt(3)} = {returnedMembers.Values.ElementAt(3)}\n" +
+                $"{returnedMembers.Keys.ElementAt(4)} = {returnedMembers.Values.ElementAt(4)}\n");
         }
 
         #endregion

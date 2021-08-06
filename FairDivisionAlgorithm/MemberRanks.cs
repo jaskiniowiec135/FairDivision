@@ -9,6 +9,6 @@ namespace FairDivisionAlgorithm
     public class MemberRanks
     {
         public string name;
-        public List<double> ranks;
+        public List<string> objectNames;
     }
 }

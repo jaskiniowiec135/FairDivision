@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace FairDivisionAlgorithm
@@ -10,30 +11,103 @@ namespace FairDivisionAlgorithm
         List<DivisionObject> divisionObjects;
         int[] minimumParamValues;
         int[] maximumParamValues;
-        List<MemberRanks> memberRanks;
+        List<MemberRanks> membersRanks;
+        List<string> membersOrder;
 
         public Algorithm(Dictionary<string, string> c, List<MemberObject> m, List<DivisionObject> o)
         {
             configuration = c;
             members = m;
             divisionObjects = o;
-            memberRanks = new List<MemberRanks>();
+            membersRanks = new List<MemberRanks>();
         }
 
-        public void Proceed()
+        public Dictionary<string, string> Proceed()
         {
-            CalculatePreferences();
-            // set random order and proceed acording to the preferences
+            Prepare();
 
+            return FindBestObjects();
+        }
+
+        private Dictionary<string, string> FindBestObjects()
+        {
+            Dictionary<string, string> objectsAndOwners = divisionObjects.ToDictionary(x => x.ObjectName, x => x.OwnerName);
+            List<string> passedInLineMembers = new List<string>();
+            int choiceNumber = 0;
+
+            while (membersOrder.Count > 0)
+            {
+                string desiredObjectName = membersRanks.Where(x => x.name == membersOrder[0])
+                    .First().objectNames[choiceNumber];
+
+                if (objectsAndOwners.Any(x => x.Key == desiredObjectName && x.Value == membersOrder[0]))
+                {
+                    membersOrder.RemoveAt(0);
+                    choiceNumber = 0;
+                }
+                else if (objectsAndOwners.Any(x => x.Key == desiredObjectName && x.Value == ""))
+                {
+                    if(objectsAndOwners.Any(x => x.Value == membersOrder[0]))
+                    {
+                        objectsAndOwners[objectsAndOwners.Where(x => x.Value == membersOrder[0]).First().Key] = "";
+                    }
+
+                    objectsAndOwners[desiredObjectName] = membersOrder[0];
+                    membersOrder.RemoveAt(0);
+                    choiceNumber = 0;
+                }
+                else
+                {
+                    if(membersOrder.Contains(objectsAndOwners[desiredObjectName]))
+                    {
+                        if (!passedInLineMembers.Contains(objectsAndOwners[desiredObjectName]))
+                        {
+                            passedInLineMembers.Add(membersOrder[0]);
+
+                            string nextMember = objectsAndOwners[desiredObjectName];
+
+                            membersOrder.Remove(nextMember);
+                            membersOrder.Insert(0, nextMember);
+                            choiceNumber = 0;
+                        }
+                        else
+                        {
+                            objectsAndOwners[objectsAndOwners.Where(x => x.Value == membersOrder[0]).First().Value] = "";
+                            objectsAndOwners[desiredObjectName] = membersOrder[0];
+                            membersOrder.RemoveAt(0);
+                            choiceNumber = 0;
+                        }
+                    }
+                    else
+                    {
+                        choiceNumber += 1;
+                    }
+                }
+            }
+
+            return objectsAndOwners;
+        }
+
+        private void Prepare()
+        {
+            SetBorderValuesForParameters();
+            CalculatePreferences();
+            SetMembersOrder();
+        }
+
+        private void SetMembersOrder()
+        {
+            Random r = new Random();
+            membersOrder = members.Select(x => x.Name).OrderBy(o => r.Next()).ToList();
         }
 
         private void CalculatePreferences()
         {
-            SetBorderValuesForParameters();
-
             foreach (MemberObject member in members)
             {
-                memberRanks.Add(new MemberRanks() { name = member.Name, ranks = new List<double>() });
+                membersRanks.Add(new MemberRanks() { name = member.Name, objectNames = new List<string>() });
+
+                Dictionary<string, double> ranks = new Dictionary<string, double>();
 
                 foreach (DivisionObject item in divisionObjects)
                 {
@@ -53,7 +127,14 @@ namespace FairDivisionAlgorithm
                         }
                     }
 
-                    memberRanks.Last().ranks.Add(objectRank);
+                    ranks.Add(item.ObjectName, objectRank);
+                }
+
+                while (ranks.Count > 0)
+                {
+                    string objectName = ranks.Where(x => x.Value == ranks.Values.Max()).FirstOrDefault().Key;
+                    membersRanks.Last().objectNames.Add(objectName);
+                    ranks.Remove(objectName);
                 }
             }
         }
