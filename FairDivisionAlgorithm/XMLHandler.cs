@@ -41,14 +41,13 @@ namespace FairDivisionAlgorithm
             {
                 document.Descendants().First(x => x.Name == "members").Add(new XElement("member",
                     new XAttribute("name", member.Name),
-                    new XElement("budget", member.Budget),
                     new XElement("params")));
 
-                for (int i = 0; i < member.LessThan.Length; i++)
+                for (int i = 0; i < member.AcceptableValues.Length; i++)
                 {
                     document.Descendants().Last(x => x.Name == "params").Add(new XElement("param",
-                        new XElement("lessThan", member.LessThan[i]),
-                        new XElement("value", member.Values[i]),
+                        new XElement("bestValue", member.BestValues[i]),
+                        new XElement("acceptableValue", member.AcceptableValues[i]),
                         new XElement("rank", member.Rank[i])));
                 }
             }
@@ -66,7 +65,6 @@ namespace FairDivisionAlgorithm
                 document.Descendants().First(x => x.Name == "objects").Add(new XElement("object",
                     new XElement("name", divisionObject.ObjectName),
                     new XElement("owner", divisionObject.OwnerName),
-                    new XElement("value", divisionObject.Value),
                     new XElement("params")));
 
                 for (int i = 0; i < divisionObject.ParametersValues.Length; i++)
@@ -104,20 +102,18 @@ namespace FairDivisionAlgorithm
             foreach (XElement node in members.Descendants().Where(x => x.Name == "member"))
             {
                 MemberObject member = new MemberObject("",
-                    0,
-                    new bool[5],
+                    new int[5],
                     new int[5],
                     new double[5]);
 
                 member.Name = node.Attribute("name").Value;
-                member.Budget = int.Parse(node.Descendants().First(x => x.Name == "budget").Value);
 
                 for (int i = 0; i < node.Descendants().Where(x => x.Name == "param").Count(); i++)
                 {
                     var n = node.Descendants().Where(x => x.Name == "param").ElementAt(i);
 
-                    member.LessThan[i] = bool.Parse(n.Elements().ElementAt(0).Value);
-                    member.Values[i] = int.Parse(n.Elements().ElementAt(1).Value);
+                    member.BestValues[i] = int.Parse(n.Elements().ElementAt(0).Value);
+                    member.AcceptableValues[i] = int.Parse(n.Elements().ElementAt(1).Value);
                     member.Rank[i] = double.Parse(n.Elements().ElementAt(2).Value.Replace('.',','));
                 }
 
@@ -135,11 +131,10 @@ namespace FairDivisionAlgorithm
             foreach (XElement node in objects.Descendants().Where(x => x.Name == "object"))
             {
                 DivisionObject divisionObject = new DivisionObject(
-                    "", "", 0, new int[5]);
+                    "", "", new int[5]);
 
                 divisionObject.ObjectName = node.Descendants().FirstOrDefault(x => x.Name == "name").Value;
                 divisionObject.OwnerName = node.Descendants().FirstOrDefault(x => x.Name == "owner").Value;
-                divisionObject.Value = int.Parse(node.Descendants().FirstOrDefault(x => x.Name == "value").Value);
 
                 for (int i = 0; i < node.Descendants().Where(x => x.Name == "param").Count(); i++)
                 {

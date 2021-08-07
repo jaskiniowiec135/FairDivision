@@ -17,7 +17,7 @@
     <measureUnit>number</measureUnit>
   </element>
   <element>
-    <name>closestShop</name>
-    <measureUnit>meters</measureUnit>
+    <name>price</name>
+    <measureUnit>zl</measureUnit>
   </element>
 </elements>

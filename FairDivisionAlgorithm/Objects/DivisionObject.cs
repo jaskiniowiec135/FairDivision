@@ -11,7 +11,6 @@ namespace FairDivisionAlgorithm
     {
         string objectName;
         string ownerName;
-        int value;
         int[] parametersValues;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -28,23 +27,16 @@ namespace FairDivisionAlgorithm
             set { ownerName = value; OnPropertyChanged("OwnerName"); }
         }
 
-        public int Value
-        {
-            get { return value; }
-            set { this.value = value; OnPropertyChanged("Value"); }
-        }
-
         public int[] ParametersValues
         {
             get { return parametersValues; }
             set { parametersValues = value; OnPropertyChanged("ParametersValues"); }
         }
 
-        public DivisionObject(string obName = null, string owName = null, int v = 0, int[] pValues = null)
+        public DivisionObject(string obName = null, string owName = null, int[] pValues = null)
         {
             ObjectName = obName;
             OwnerName = owName;
-            Value = v;
             ParametersValues = pValues;
         }
 

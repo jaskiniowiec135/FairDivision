@@ -31,7 +31,7 @@ namespace FairDivisionAlgorithm.DataContexts
         public ObjectsContext()
         {
             CurrentObject = new DivisionObject(
-                "", "", 0, new int[5]);
+                "", "", new int[5]);
 
             InitializeCollections();
         }
@@ -70,14 +70,13 @@ namespace FairDivisionAlgorithm.DataContexts
         public DivisionObject ReturnSelectedObject(string name)
         {
             DivisionObject result = new DivisionObject(
-                "", "", 0, new int[5]);
+                "", "", new int[5]);
 
             DivisionObject selected = DivisionObjects.First(
                 x => x.ObjectName == name.ToString());
 
             result.ObjectName = name.ToString();
             result.OwnerName = selected.OwnerName;
-            result.Value = selected.Value;
 
             for (int i = 0; i < DivisionObjectParams.Count; i++)
             {

@@ -83,41 +83,25 @@
                     </Grid.RowDefinitions>
                     <ComboBox x:Name="membersConfigComboBox" ToolTip="Select configuration" VerticalAlignment="Top" DropDownOpened="membersConfigComboBox_DropDownOpened" DropDownClosed="membersConfigComboBox_DropDownClosed" Margin="10" Grid.ColumnSpan="2" Grid.Row="0"/>
                     <ComboBox x:Name="membersComboBox" ToolTip="Member name" IsEditable="True" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="1" Margin="10" DropDownOpened="membersComboBox_DropDownOpened"  DropDownClosed="membersComboBox_DropDownClosed"/>
-                    <TextBox Text="{Binding CurrentMember.Budget}" ToolTip="Budget" Margin="10" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1"/>
                     <Label Content="{Binding MemberParams[0]}" ToolTip="Parameter 1" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2" Margin="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="34"/>
-                    <Grid Grid.Row="2" Grid.Column="1">
-                        <RadioButton IsChecked="{Binding Path=CurrentMember.LessThan[0]}" Content="&lt;=" HorizontalAlignment="Left" Margin="19,12,0,0" VerticalAlignment="Top"/>
-                        <RadioButton IsChecked="{Binding Path=CurrentMember.LessThan[0], Converter={StaticResource oppositeBooleanConverter}}" Content=">=" HorizontalAlignment="Left" Margin="19,32,0,0" VerticalAlignment="Top"/>
-                    </Grid>
-                    <TextBox Text="{Binding CurrentMember.Values[0]}" ToolTip="Desired value 1" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="2"/>
+                    <TextBox Text="{Binding CurrentMember.BestValues[0]}" ToolTip="Best value 1" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="1" Grid.Row="2"/>
+                    <TextBox Text="{Binding CurrentMember.AcceptableValues[0]}" ToolTip="Acceptable value 1" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="2"/>
                     <TextBox Text="{Binding CurrentMember.Rank[0]}" ToolTip="Rank 1" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="3" Grid.Row="2"/>
                     <Label Content="{Binding MemberParams[1]}" ToolTip="Parameter 2" Margin="10" VerticalContentAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="3" Height="34"/>
-                    <Grid Grid.Column="1" Grid.Row="3">
-                        <RadioButton IsChecked="{Binding Path=CurrentMember.LessThan[1]}"  Content="&lt;=" HorizontalAlignment="Left" Margin="19,12,0,0" VerticalAlignment="Top"/>
-                        <RadioButton IsChecked="{Binding Path=CurrentMember.LessThan[1], Converter={StaticResource oppositeBooleanConverter}}"  Content=">=" HorizontalAlignment="Left" Margin="19,32,0,0" VerticalAlignment="Top"/>
-                    </Grid>
-                    <TextBox Text="{Binding CurrentMember.Values[1]}" ToolTip="Desired value 2" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="3"/>
+                    <TextBox Text="{Binding CurrentMember.BestValues[1]}" ToolTip="Best value 2" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="1" Grid.Row="3"/>
+                    <TextBox Text="{Binding CurrentMember.AcceptableValues[1]}" ToolTip="Acceptable value 2" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="3"/>
                     <TextBox Text="{Binding CurrentMember.Rank[1]}" ToolTip="Rank 2" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="3" Grid.Row="3"/>
                     <Label Content="{Binding MemberParams[2]}" ToolTip="Parameter 3" Margin="10" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="4" Height="34"/>
-                    <Grid Grid.Column="1" Grid.Row="4">
-                        <RadioButton IsChecked="{Binding Path=CurrentMember.LessThan[2]}"  Content="&lt;=" HorizontalAlignment="Left" Margin="19,10,0,0" VerticalAlignment="Top" />
-                        <RadioButton IsChecked="{Binding Path=CurrentMember.LessThan[2], Converter={StaticResource oppositeBooleanConverter}}"  Content=">=" HorizontalAlignment="Left" Margin="19,29,0,0" VerticalAlignment="Top"/>
-                    </Grid>
-                    <TextBox Text="{Binding CurrentMember.Values[2]}" ToolTip="Desired value 3" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="4"/>
+                    <TextBox Text="{Binding CurrentMember.BestValues[2]}" ToolTip="Best value 3" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="1" Grid.Row="4"/>
+                    <TextBox Text="{Binding CurrentMember.AcceptableValues[2]}" ToolTip="Acceptable value 3" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="4"/>
                     <TextBox Text="{Binding CurrentMember.Rank[2]}" ToolTip="Rank 3" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="3" Grid.Row="4"/>
                     <Label Content="{Binding MemberParams[3]}" ToolTip="Parameter 4" Margin="10" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="5" Height="33"/>
-                    <Grid Grid.Column="1" Grid.Row="5">
-                        <RadioButton IsChecked="{Binding Path=CurrentMember.LessThan[3]}"  Content="&lt;=" HorizontalAlignment="Left" Margin="19,10,0,0" VerticalAlignment="Top"/>
-                        <RadioButton IsChecked="{Binding Path=CurrentMember.LessThan[3], Converter={StaticResource oppositeBooleanConverter}}"  Content=">=" HorizontalAlignment="Left" Margin="19,28,0,0" VerticalAlignment="Top"/>
-                    </Grid>
-                    <TextBox Text="{Binding CurrentMember.Values[3]}" ToolTip="Desired value 4" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="5"/>
+                    <TextBox Text="{Binding CurrentMember.BestValues[3]}" ToolTip="Best value 4" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="1" Grid.Row="5"/>
+                    <TextBox Text="{Binding CurrentMember.AcceptableValues[3]}" ToolTip="Acceptable value 4" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="5"/>
                     <TextBox Text="{Binding CurrentMember.Rank[3]}" ToolTip="Rank 4" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="3" Grid.Row="5"/>
                     <Label Content="{Binding MemberParams[4]}" ToolTip="Parameter 5" Margin="10" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="6" Height="33"/>
-                    <Grid Grid.Column="1" Grid.Row="6">
-                        <RadioButton IsChecked="{Binding Path=CurrentMember.LessThan[4]}"  Content="&lt;=" HorizontalAlignment="Left" Margin="19,10,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="6"/>
-                        <RadioButton IsChecked="{Binding Path=CurrentMember.LessThan[4], Converter={StaticResource oppositeBooleanConverter}}"  Content=">=" HorizontalAlignment="Left" Margin="19,28,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="6"/>
-                    </Grid>
-                    <TextBox Text="{Binding CurrentMember.Values[4]}" ToolTip="Desired value 5" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="6"/>
+                    <TextBox Text="{Binding CurrentMember.BestValues[4]}" ToolTip="Best value 5" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="1" Grid.Row="6"/>
+                    <TextBox Text="{Binding CurrentMember.AcceptableValues[4]}" ToolTip="Acceptable value 5" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="2" Grid.Row="6"/>
                     <TextBox Text="{Binding CurrentMember.Rank[4]}" ToolTip="Rank 5" Margin="10" VerticalContentAlignment="Center" TextAlignment="Center" Grid.Column="3" Grid.Row="6"/>
                     <Grid Grid.ColumnSpan="4" Grid.Row="7">
                         <Grid.ColumnDefinitions>
@@ -169,7 +153,6 @@
                     <ComboBox x:Name="objectsConfigComboBox" ToolTip="Select configuration" VerticalAlignment="Top" DropDownOpened="objectsConfigComboBox_DropDownOpened" DropDownClosed="objectsConfigComboBox_DropDownClosed" Margin="10" Grid.Column="0" Grid.Row="0"/>
                     <ComboBox x:Name="objectsNameComboBox" ToolTip="Object name" IsEditable="True" Margin="10" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1" DropDownOpened="objectsComboBox_DropDownOpened" DropDownClosed="objectsComboBox_DropDownClosed"/>
                     <ComboBox x:Name="objectsOwnerComboBox" ToolTip="Owner name" IsEditable="True" Margin="10" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2"/>
-                    <TextBox Text="{Binding CurrentObject.Value}" ToolTip="Object value" Margin="10" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2"/>
                     <Label Content="{Binding DivisionObjectParams[0]}" Margin="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="3"/>
                     <TextBox Text="{Binding CurrentObject.ParametersValues[0]}" ToolTip="Parameter 1 value" Margin="10" Height="34" VerticalContentAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Grid.Column="1" Grid.Row="3"/>
                     <Label Content="{Binding DivisionObjectParams[1]}" Margin="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="4"/>

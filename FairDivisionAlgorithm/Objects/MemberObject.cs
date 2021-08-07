@@ -5,9 +5,8 @@ namespace FairDivisionAlgorithm
     public class MemberObject : INotifyPropertyChanged
     {
         private string name;
-        private int budget;
-        private bool[] lessThan;
-        private int[] values;
+        private int[] acceptable;
+        private int[] best;
         private double[] rank;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -17,20 +16,15 @@ namespace FairDivisionAlgorithm
             get { return name; }
             set { name = value; OnPropertyChanged("Name"); }
         }
-        public int Budget
+        public int[] AcceptableValues
         {
-            get { return budget; }
-            set { budget = value; OnPropertyChanged("Budget"); }
+            get { return acceptable; }
+            set { acceptable = value; OnPropertyChanged("LessThan"); }
         }
-        public bool[] LessThan
+        public int[] BestValues
         {
-            get { return lessThan; }
-            set { lessThan = value; OnPropertyChanged("LessThan"); }
-        }
-        public int[] Values
-        {
-            get { return values; }
-            set { values = value; OnPropertyChanged("Values"); }
+            get { return best; }
+            set { best = value; OnPropertyChanged("Values"); }
         }
         public double[] Rank
         {
@@ -38,12 +32,11 @@ namespace FairDivisionAlgorithm
             set { rank = value; OnPropertyChanged("Rank"); }
         }
 
-        public MemberObject(string n = "", int b = 0, bool[] lT = null, int[] v = null, double[] r = null)
+        public MemberObject(string n = "", int[] a = null, int[] b = null, double[] r = null)
         {
             name = n;
-            budget = b;
-            lessThan = lT;
-            values = v;
+            acceptable = a;
+            best = b;
             rank = r;
         }
 

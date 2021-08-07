@@ -3,61 +3,56 @@
   <object>
     <name>First</name>
     <owner></owner>
-    <value>400000</value>
     <params>
       <param>2</param>
       <param>0</param>
       <param>10</param>
       <param>2</param>
-      <param>100</param>
+      <param>400000</param>
     </params>
   </object>
   <object>
     <name>Second</name>
     <owner></owner>
-    <value>600000</value>
     <params>
       <param>3</param>
       <param>0</param>
       <param>30</param>
       <param>2</param>
-      <param>500</param>
+      <param>600000</param>
     </params>
   </object>
   <object>
     <name>Third</name>
     <owner></owner>
-    <value>400000</value>
     <params>
       <param>1</param>
       <param>1</param>
       <param>20</param>
       <param>2</param>
-      <param>400</param>
+      <param>400000</param>
     </params>
   </object>
   <object>
     <name>Fourth</name>
     <owner>Grzesiek</owner>
-    <value>500000</value>
     <params>
       <param>2</param>
       <param>0</param>
       <param>10</param>
       <param>3</param>
-      <param>700</param>
+      <param>500000</param>
     </params>
   </object>
   <object>
     <name>Fifth</name>
     <owner>Kuba</owner>
-    <value>700000</value>
     <params>
       <param>2</param>
       <param>1</param>
       <param>100</param>
       <param>0</param>
-      <param>300</param>
+      <param>700000</param>
     </params>
   </object>
 </objects>

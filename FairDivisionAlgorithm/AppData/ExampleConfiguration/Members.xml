@@ -1,151 +1,146 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <members>
   <member name="Wojtek">
-    <budget>300000</budget>
     <params>
       <param>
-        <lessThan>true</lessThan>
-        <value>2</value>
+        <bestValue>2</bestValue>
+        <acceptableValue>1</acceptableValue>
         <rank>0.2</rank>
       </param>
       <param>
-        <lessThan>true</lessThan>
-        <value>0</value>
+        <bestValue>0</bestValue>
+        <acceptableValue>0</acceptableValue>
         <rank>0.2</rank>
       </param>
       <param>
-        <lessThan>false</lessThan>
-        <value>20</value>
+        <bestValue>20</bestValue>
+        <acceptableValue>10</acceptableValue>
         <rank>0.2</rank>
       </param>
       <param>
-        <lessThan>true</lessThan>
-        <value>1</value>
+        <bestValue>1</bestValue>
+        <acceptableValue>0</acceptableValue>
         <rank>0.2</rank>
       </param>
       <param>
-        <lessThan>true</lessThan>
-        <value>200</value>
+        <bestValue>400000</bestValue>
+        <acceptableValue>500000</acceptableValue>
         <rank>0.2</rank>
       </param>
     </params>
   </member>
   <member name="Piotrek">
-    <budget>800000</budget>
     <params>
       <param>
-        <lessThan>false</lessThan>
-        <value>1</value>
+        <bestValue>1</bestValue>
+        <acceptableValue>0</acceptableValue>
         <rank>0.1</rank>
       </param>
       <param>
-        <lessThan>true</lessThan>
-        <value>1</value>
+        <bestValue>1</bestValue>
+        <acceptableValue>1</acceptableValue>
         <rank>0.3</rank>
       </param>
       <param>
-        <lessThan>false</lessThan>
-        <value>10</value>
+        <bestValue>30</bestValue>
+        <acceptableValue>10</acceptableValue>
         <rank>0.1</rank>
       </param>
       <param>
-        <lessThan>true</lessThan>
-        <value>3</value>
+        <bestValue>3</bestValue>
+        <acceptableValue>1</acceptableValue>
         <rank>0.4</rank>
       </param>
       <param>
-        <lessThan>true</lessThan>
-        <value>200</value>
+        <bestValue>300000</bestValue>
+        <acceptableValue>400000</acceptableValue>
         <rank>0.1</rank>
       </param>
     </params>
   </member>
   <member name="Rafał">
-    <budget>400000</budget>
     <params>
       <param>
-        <lessThan>true</lessThan>
-        <value>2</value>
+        <bestValue>2</bestValue>
+        <acceptableValue>1</acceptableValue>
         <rank>0.15</rank>
       </param>
       <param>
-        <lessThan>true</lessThan>
-        <value>1</value>
+        <bestValue>1</bestValue>
+        <acceptableValue>0</acceptableValue>
         <rank>0.2</rank>
       </param>
       <param>
-        <lessThan>true</lessThan>
-        <value>40</value>
+        <bestValue>40</bestValue>
+        <acceptableValue>30</acceptableValue>
         <rank>0.15</rank>
       </param>
       <param>
-        <lessThan>true</lessThan>
-        <value>1</value>
+        <bestValue>1</bestValue>
+        <acceptableValue>1</acceptableValue>
         <rank>0.2</rank>
       </param>
       <param>
-        <lessThan>true</lessThan>
-        <value>300</value>
+        <bestValue>600000</bestValue>
+        <acceptableValue>800000</acceptableValue>
         <rank>0.3</rank>
       </param>
     </params>
   </member>
   <member name="Grzesiek">
-    <budget>900000</budget>
     <params>
       <param>
-        <lessThan>false</lessThan>
-        <value>2</value>
+        <bestValue>2</bestValue>
+        <acceptableValue>1</acceptableValue>
         <rank>0.4</rank>
       </param>
       <param>
-        <lessThan>false</lessThan>
-        <value>0</value>
+        <bestValue>0</bestValue>
+        <acceptableValue>0</acceptableValue>
         <rank>0</rank>
       </param>
       <param>
-        <lessThan>false</lessThan>
-        <value>0</value>
+        <bestValue>0</bestValue>
+        <acceptableValue>0</acceptableValue>
         <rank>0</rank>
       </param>
       <param>
-        <lessThan>true</lessThan>
-        <value>3</value>
-        <rank>0.6</rank>
+        <bestValue>3</bestValue>
+        <acceptableValue>2</acceptableValue>
+        <rank>0.4</rank>
       </param>
       <param>
-        <lessThan>false</lessThan>
-        <value>0</value>
-        <rank>0</rank>
+        <bestValue>600000</bestValue>
+        <acceptableValue>800000</acceptableValue>
+        <rank>0.2</rank>
       </param>
     </params>
   </member>
   <member name="Kuba">
-    <budget>700000</budget>
     <params>
       <param>
-        <lessThan>false</lessThan>
-        <value>3</value>
+        <bestValue>3</bestValue>
+        <acceptableValue>2</acceptableValue>
         <rank>0.4</rank>
       </param>
       <param>
-        <lessThan>true</lessThan>
-        <value>1</value>
+        <bestValue>1</bestValue>
+        <acceptableValue>0</acceptableValue>
         <rank>0.1</rank>
       </param>
       <param>
-        <lessThan>true</lessThan>
-        <value>40</value>
+        <bestValue>40</bestValue>
+        <acceptableValue>10</acceptableValue>
         <rank>0.1</rank>
       </param>
       <param>
-        <lessThan>true</lessThan>
-        <value>1</value>
+        <bestValue>1</bestValue>
+        <acceptableValue>1</acceptableValue>
         <rank>0.2</rank>
       </param>
       <param>
-        <lessThan>true</lessThan>
-        <value>1000</value>
+        <bestValue>300000</bestValue>
+        <acceptableValue>400000</acceptableValue>
         <rank>0.2</rank>
       </param>
     </params>

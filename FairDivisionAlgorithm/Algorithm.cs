@@ -115,14 +115,12 @@ namespace FairDivisionAlgorithm
 
                     for (int i = 0; i < item.ParametersValues.Length; i++)
                     {
-                        if (member.LessThan[i] == true)
+                        int[] tmpArr = new int[2] { member.BestValues[i], member.AcceptableValues[i] };
+
+                        if(item.ParametersValues[i] <= tmpArr.Max() &&
+                            item.ParametersValues[i] >= tmpArr.Min())
                         {
-                            double tmp = (member.Values[i] + 1.0) / (item.ParametersValues[i] + 1.0) * member.Rank[i];
-                            objectRank += tmp;
-                        }
-                        else
-                        {
-                            double tmp = (item.ParametersValues[i] + 1.0) / (member.Values[i] + 1.0) * member.Rank[i];
+                            double tmp = (item.ParametersValues[i] + 1.0) / (member.BestValues[i] + 1.0) * member.Rank[i];
                             objectRank += tmp;
                         }
                     }

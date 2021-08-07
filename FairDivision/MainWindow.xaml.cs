@@ -174,18 +174,16 @@ namespace FairDivision
             int numberOfParams = membersContext.MemberParams.Count;
 
             MemberObject member = new MemberObject("",
-                0,
-                new bool[numberOfParams],
+                new int[numberOfParams],
                 new int[numberOfParams],
                 new double[numberOfParams]);
 
             member.Name = membersComboBox.Text;
-            member.Budget = membersContext.CurrentMember.Budget;
 
             for (int i = 0; i < numberOfParams; i++)
             {
-                member.LessThan[i] = membersContext.CurrentMember.LessThan[i];
-                member.Values[i] = membersContext.CurrentMember.Values[i];
+                member.AcceptableValues[i] = membersContext.CurrentMember.AcceptableValues[i];
+                member.BestValues[i] = membersContext.CurrentMember.BestValues[i];
                 member.Rank[i] = membersContext.CurrentMember.Rank[i];
             }
 
@@ -290,11 +288,10 @@ namespace FairDivision
             int numberOfParams = objectsContext.DivisionObjectParams.Count;
 
             DivisionObject divisionObject = new DivisionObject(
-                "", "", 0, new int[5]);
+                "", "", new int[5]);
 
             divisionObject.ObjectName = objectsNameComboBox.Text;
             divisionObject.OwnerName = objectsOwnerComboBox.Text;
-            divisionObject.Value = objectsContext.CurrentObject.Value;
 
             for (int i = 0; i < numberOfParams; i++)
             {
