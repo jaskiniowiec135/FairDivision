@@ -113,19 +113,23 @@ namespace FairDivisionAlgorithm
                 {
                     double objectRank = new double();
 
-                    for (int i = 0; i < item.ParametersValues.Length; i++)
+                    if (member.Budget >= item.Value)
                     {
-                        if (member.LessThan[i] == true)
+                        for (int i = 0; i < item.ParametersValues.Length; i++)
+
                         {
-                            double tmp = (member.Values[i] + 1.0) / (item.ParametersValues[i] + 1.0) * member.Rank[i];
-                            objectRank += tmp;
+                            if (member.LessThan[i] == true)
+                            {
+                                double tmp = (member.Values[i] + 1.0) / (item.ParametersValues[i] + 1.0) * member.Rank[i];
+                                objectRank += tmp;
+                            }
+                            else
+                            {
+                                double tmp = (item.ParametersValues[i] + 1.0) / (member.Values[i] + 1.0) * member.Rank[i];
+                                objectRank += tmp;
+                            }
                         }
-                        else
-                        {
-                            double tmp = (item.ParametersValues[i] + 1.0) / (member.Values[i] + 1.0) * member.Rank[i];
-                            objectRank += tmp;
-                        }
-                    }
+                    }                 
 
                     ranks.Add(item.ObjectName, objectRank);
                 }
