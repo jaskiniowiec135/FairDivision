@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<elements>
+  <element>
+    <name>Beds</name>
+    <measureUnit>number</measureUnit>
+  </element>
+  <element>
+    <name>Nearest bathroom</name>
+    <measureUnit>number</measureUnit>
+  </element>
+  <element>
+    <name>Rent</name>
+    <measureUnit>zl</measureUnit>
+  </element>
+</elements>

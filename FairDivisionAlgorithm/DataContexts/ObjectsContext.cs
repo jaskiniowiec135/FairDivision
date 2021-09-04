@@ -30,10 +30,7 @@ namespace FairDivisionAlgorithm.DataContexts
 
         public ObjectsContext()
         {
-            CurrentObject = new DivisionObject(
-                "", "", new int[5]);
-
-            InitializeCollections();
+            InitializeObjects();
         }
 
         public void SaveObject(DivisionObject divisionObject)
@@ -57,7 +54,7 @@ namespace FairDivisionAlgorithm.DataContexts
         {
             DivisionObject objectToUpdate = DivisionObjects.First(x => x.ObjectName == divisionObject.ObjectName);
             int index = DivisionObjects.IndexOf(objectToUpdate);
-            DivisionObjects[index] = CurrentObject;
+            DivisionObjects[index] = divisionObject;
         }
 
         public void RemoveObject(string name)
@@ -86,8 +83,11 @@ namespace FairDivisionAlgorithm.DataContexts
             return result;
         }
 
-        private void InitializeCollections()
+        public void InitializeObjects()
         {
+            CurrentObject = new DivisionObject(
+                "", "", new int[5]);
+
             DivisionObjects = new ObservableCollection<DivisionObject>();
             DivisionObjectParams = new ObservableCollection<string>();
 

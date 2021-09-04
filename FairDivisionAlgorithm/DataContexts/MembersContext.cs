@@ -56,7 +56,7 @@ namespace FairDivisionAlgorithm.DataContexts
         {
             MemberObject memberToUpdate = Members.First(x => x.Name == member.Name);
             int index = Members.IndexOf(memberToUpdate);
-            Members[index] = CurrentMember;
+            Members[index] = member;
         }
 
         public void RemoveMember(string name)
