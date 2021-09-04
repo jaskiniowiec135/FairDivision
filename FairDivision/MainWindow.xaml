@@ -152,7 +152,7 @@
                     </Grid.RowDefinitions>
                     <ComboBox x:Name="objectsConfigComboBox" ToolTip="Select configuration" VerticalAlignment="Top" DropDownOpened="objectsConfigComboBox_DropDownOpened" DropDownClosed="objectsConfigComboBox_DropDownClosed" Margin="10" Grid.Column="0" Grid.Row="0"/>
                     <ComboBox x:Name="objectsNameComboBox" ToolTip="Object name" IsEditable="True" Margin="10" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1" DropDownOpened="objectsComboBox_DropDownOpened" DropDownClosed="objectsComboBox_DropDownClosed"/>
-                    <ComboBox x:Name="objectsOwnerComboBox" ToolTip="Owner name" IsEditable="True" Margin="10" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2"/>
+                    <ComboBox x:Name="objectsOwnerComboBox" ToolTip="Owner name" IsEditable="False" Margin="10" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2"/>
                     <Label Content="{Binding DivisionObjectParams[0]}" Margin="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="3"/>
                     <TextBox Text="{Binding CurrentObject.ParametersValues[0]}" ToolTip="Parameter 1 value" Margin="10" Height="34" VerticalContentAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Grid.Column="1" Grid.Row="3"/>
                     <Label Content="{Binding DivisionObjectParams[1]}" Margin="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="4"/>
