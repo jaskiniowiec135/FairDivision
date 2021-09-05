@@ -79,13 +79,8 @@ namespace FairDivision
             configurationContext.InitializeCollections();
             string name = configComboBox.Text;
 
-            Dictionary<string, string> configuration = ConfigurationOperations.GetConfiguration(name);
-
-            for (int i = 0; i < configuration.Count; i++)
-            {
-                configurationContext.ConfigParams[i] = configuration.Keys.ElementAt(i);
-                configurationContext.ConfigUnits[i] = configuration.Values.ElementAt(i);
-            }
+            configurationContext.SetConfiguration(
+                ConfigurationOperations.GetConfiguration(name));
         }
 
         private void configSave_Click(object sender, RoutedEventArgs e)

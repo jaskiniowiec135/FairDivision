@@ -31,6 +31,15 @@ namespace FairDivisionAlgorithm.DataContexts
             InitializeCollections();
         }
 
+        public void SetConfiguration(Dictionary<string,string> configuration)
+        {
+            for (int i = 0; i < configuration.Count; i++)
+            {
+                ConfigParams[i] = configuration.Keys.ElementAt(i);
+                ConfigUnits[i] = configuration.Values.ElementAt(i);
+            }
+        }
+
         void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
