@@ -43,6 +43,7 @@ namespace FairDivisionAlgorithm
                 if (objectsAndOwners.Any(x => x.Key == desiredObjectName && x.Value == membersOrder[0]))
                 {
                     membersOrder.RemoveAt(0);
+                    passedInLineMembers = new List<string>();
                     choiceNumber = 0;
                 }
                 else if (objectsAndOwners.Any(x => x.Key == desiredObjectName && x.Value == ""))
@@ -54,6 +55,7 @@ namespace FairDivisionAlgorithm
 
                     objectsAndOwners[desiredObjectName] = membersOrder[0];
                     membersOrder.RemoveAt(0);
+                    passedInLineMembers = new List<string>();
                     choiceNumber = 0;
                 }
                 else
@@ -74,6 +76,7 @@ namespace FairDivisionAlgorithm
                         {
                             objectsAndOwners[objectsAndOwners.Where(x => x.Value == membersOrder[0]).First().Value] = "";
                             objectsAndOwners[desiredObjectName] = membersOrder[0];
+                            passedInLineMembers = new List<string>();
                             membersOrder.RemoveAt(0);
                             choiceNumber = 0;
                         }
@@ -90,7 +93,6 @@ namespace FairDivisionAlgorithm
 
         private void Prepare()
         {
-            SetBorderValuesForParameters();
             CalculatePreferences();
             SetMembersOrder();
         }
@@ -120,8 +122,16 @@ namespace FairDivisionAlgorithm
                         if(item.ParametersValues[i] <= tmpArr.Max() &&
                             item.ParametersValues[i] >= tmpArr.Min())
                         {
-                            double tmp = (item.ParametersValues[i] + 1.0) / (member.BestValues[i] + 1.0) * member.Rank[i];
-                            objectRank += tmp;
+                            if(member.BestValues[i] > member.AcceptableValues[i])
+                            {
+                                double tmp = ((item.ParametersValues[i] + 1.0) / (member.BestValues[i] + 1.0)) * member.Rank[i];
+                                objectRank += tmp;
+                            }
+                            else
+                            {
+                                double tmp = ((member.BestValues[i] + 1.0) / (item.ParametersValues[i] + 1.0)) * member.Rank[i];
+                                objectRank += tmp;
+                            }
                         }
                     }
 
@@ -133,39 +143,6 @@ namespace FairDivisionAlgorithm
                     string objectName = ranks.Where(x => x.Value == ranks.Values.Max()).FirstOrDefault().Key;
                     membersRanks.Last().objectNames.Add(objectName);
                     ranks.Remove(objectName);
-                }
-            }
-        }
-
-        private void SetBorderValuesForParameters()
-        {
-            minimumParamValues = new int[5] {
-                int.MaxValue,
-                int.MaxValue,
-                int.MaxValue,
-                int.MaxValue,
-                int.MaxValue};
-
-            maximumParamValues = new int[5] {
-                int.MinValue,
-                int.MinValue,
-                int.MinValue,
-                int.MinValue,
-                int.MinValue};
-
-            for (int o = 0; o < divisionObjects.Count; o++)
-            {
-                for (int c = 0; c < configuration.Count; c++)
-                {
-                    if (minimumParamValues[c] > divisionObjects[o].ParametersValues[c])
-                    {
-                        minimumParamValues[c] = divisionObjects[o].ParametersValues[c];
-                    }
-
-                    if (maximumParamValues[c] < divisionObjects[o].ParametersValues[c])
-                    {
-                        maximumParamValues[c] = divisionObjects[o].ParametersValues[c];
-                    }
                 }
             }
         }

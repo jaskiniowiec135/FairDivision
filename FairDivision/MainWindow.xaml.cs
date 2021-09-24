@@ -357,7 +357,7 @@ namespace FairDivision
                 result += $"{item.Key} = {item.Value}\n";
             }
 
-            MessageBox.Show(result);
+            MessageBox.Show(result, "Algorithm result");
         }
 
         #endregion
