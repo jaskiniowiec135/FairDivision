@@ -79,13 +79,8 @@ namespace FairDivision
             configurationContext.InitializeCollections();
             string name = configComboBox.Text;
 
-            Dictionary<string, string> configuration = ConfigurationOperations.GetConfiguration(name);
-
-            for (int i = 0; i < configuration.Count; i++)
-            {
-                configurationContext.ConfigParams[i] = configuration.Keys.ElementAt(i);
-                configurationContext.ConfigUnits[i] = configuration.Values.ElementAt(i);
-            }
+            configurationContext.SetConfiguration(
+                ConfigurationOperations.GetConfiguration(name));
         }
 
         private void configSave_Click(object sender, RoutedEventArgs e)
@@ -174,18 +169,16 @@ namespace FairDivision
             int numberOfParams = membersContext.MemberParams.Count;
 
             MemberObject member = new MemberObject("",
-                0,
-                new bool[numberOfParams],
+                new int[numberOfParams],
                 new int[numberOfParams],
                 new double[numberOfParams]);
 
             member.Name = membersComboBox.Text;
-            member.Budget = membersContext.CurrentMember.Budget;
 
             for (int i = 0; i < numberOfParams; i++)
             {
-                member.LessThan[i] = membersContext.CurrentMember.LessThan[i];
-                member.Values[i] = membersContext.CurrentMember.Values[i];
+                member.AcceptableValues[i] = membersContext.CurrentMember.AcceptableValues[i];
+                member.BestValues[i] = membersContext.CurrentMember.BestValues[i];
                 member.Rank[i] = membersContext.CurrentMember.Rank[i];
             }
 
@@ -235,6 +228,8 @@ namespace FairDivision
         private void objectsConfigComboBox_DropDownClosed(object sender, EventArgs e)
         {
             string name = objectsConfigComboBox.Text;
+            objectsNameComboBox.Text = "";
+            objectsContext.InitializeObjects();
 
             Dictionary<string, string> configuration = ConfigurationOperations.GetConfiguration(name);
 
@@ -290,11 +285,10 @@ namespace FairDivision
             int numberOfParams = objectsContext.DivisionObjectParams.Count;
 
             DivisionObject divisionObject = new DivisionObject(
-                "", "", 0, new int[5]);
+                "", "", new int[5]);
 
             divisionObject.ObjectName = objectsNameComboBox.Text;
             divisionObject.OwnerName = objectsOwnerComboBox.Text;
-            divisionObject.Value = objectsContext.CurrentObject.Value;
 
             for (int i = 0; i < numberOfParams; i++)
             {
@@ -356,13 +350,14 @@ namespace FairDivision
 
             Dictionary<string,string> returnedMembers = algorithm.Proceed();
 
-            MessageBox.Show(
-                $"{returnedMembers.Keys.ElementAt(0)} = {returnedMembers.Values.ElementAt(0)}\n" +
-                $"{returnedMembers.Keys.ElementAt(1)} = {returnedMembers.Values.ElementAt(1)}\n" +
-                $"{returnedMembers.Keys.ElementAt(2)} = {returnedMembers.Values.ElementAt(2)}\n" +
-                $"{returnedMembers.Keys.ElementAt(3)} = {returnedMembers.Values.ElementAt(3)}\n" +
-                $"{returnedMembers.Keys.ElementAt(4)} = {returnedMembers.Values.ElementAt(4)}\n",
-                "Algorithm result");
+            string result = $"Result of algorithm run:\n";
+
+            foreach (var item in returnedMembers)
+            {
+                result += $"{item.Key} = {item.Value}\n";
+            }
+
+            MessageBox.Show(result, "Algorithm result");
         }
 
         #endregion
