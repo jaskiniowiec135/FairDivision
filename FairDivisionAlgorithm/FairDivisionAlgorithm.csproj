@@ -57,9 +57,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="AppData\ExampleConfiguration2\Configuration.xml" />
     <Content Include="AppData\ExampleConfiguration2\Members.xml" />
     <Content Include="AppData\ExampleConfiguration2\Objects.xml" />
