@@ -40,7 +40,16 @@ In current form application is delivered as WPF project. It contains four tabs, 
 
 ## Configuration
 
-At the first tab user can create new configuration *Save configuration* , get one *Get configuration* or remove existing one *Remove configuration*, already saved to file. In the combobox user can insert name of the new configuration or choose existing one. After setting name for new configuration user must insert attributes. Depending on the type of objects divided between persons, user have to decide which attributes are crucial and most important for them. In given example (ExampleConfiguration) houses are the objects of division, and attributes distinguishing them are:
+### Possible operations
+
+In this tab, user is able to:
+* can create new configuration *Save configuration* 
+* get already saved configuration *Get configuration*
+* remove existing configuration *Remove configuration*
+
+### Usage example
+
+In the combobox user can insert name of the new configuration or choose existing one. After setting name for new configuration user must insert attributes. Depending on the type of objects divided between persons, user have to decide which attributes are crucial and most important for them. In given example (ExampleConfiguration) houses are the objects of division, and attributes distinguishing them are:
 
 * number of bathrooms
 * number of swimming pools
@@ -48,27 +57,50 @@ At the first tab user can create new configuration *Save configuration* , get on
 * number of the garages
 * price
 
-What is worth mentioning, in the classic approach to the YRMH-IGYT algorithm, there were no possibility of talking about the price of the objects. However here it can be one of the attributes of the object. After passing all attributes and their units user have to save it with "Save configuration" button. If it was new configuration, specific folder was created, otherwise existing file was overwritten with currently inserted value. Please keep in mind, that user don't have to pass all attributes, but every attribute must be passed as pair of name and unit, otherwise it will be ignored. For now user can pass maximum of 5 attributes, however in future there are plans for dynamic number of attributes to add. After preparing configuration user are able to go to the next tab named *Members*.
+What is worth mentioning, in the classic approach to the YRMH-IGYT algorithm, there were no possibility of talking about the price of the objects. However here it can be one of the attributes of the object. After passing all attributes and their units user have to save it with "Save configuration" button. If it was new configuration, specific folder is created, otherwise existing file is overwritten with currently inserted value. Please keep in mind, that user don't have to pass all attributes, but every attribute must be passed as pair of name and unit, otherwise it will be ignored. For now user can pass maximum of 5 attributes, however in future there are plans for dynamic number of attributes to add. After preparing configuration user are able to go to the next tab named *Members*. If user already prepared configuration earlier, he can also go to the next tab or select configuration from the list and click *Get configuration* button to verify attributes. However if user wants to remove already prepared and saved configuration, he must choose one from the list and click *Remove configuration* button.
 
 ## Members
+
+### Possible operations
+
+In this tab, user is able to:
+* save single member *Save member*
+* remove single member from list *Remove member*
+* save all members on list to the file *Save members*
+* remove file with saved members *Remove members*
+
+### Usage example
 
 At the very beggining user have to choose configuration from the dropdown list. After that user can enter specific participants of the division along with their preferences of the ideal object. For every attribute there are 3 cells to input data. First of them is for the best value of the specific attribute, second one is for accepttable value, while the last one is for the rank of the specific attribute. This approach is for users, which doesn't care about anything except one or two things, like Grzesiek, who is only looking at number of bathrooms, number of garages and price. It doesn't mean that ideal object for Grzesiek is without garden and swimming pool, however their number doesn't influence on the final rate of the specific object. Final rate for the specific object is calculated as a sum of rates of all attributes, which are counted according to the following pattern:
 
 * if best value is bigger than accepted value - ((actualValue + 1.0) / (bestValue + 1.0)) * rank
 * if best value is smaller than accepted value - ((bestValue + 1.0) / (actualValue + 1.0)) * rank
 
-Thanks to the + 1.0 operation we are covering situation, when best value is 0, but as long as the ranks are related only between themselfes, it doesn't affect final result of the algorithm process. This is why rank is so important thing, because there is no need of setting ranks to sum them to the 1.0, it might as well be 100 or 350. For constistency and ease of entering the data by the user all of the participants should have the same amount of points to assign to the ranks, but its also not necessary, because ranking is counted separately for every participant and object, so rank limit equal to 1000000 at one participant doesn't affect to the rank limit 1.0 at the other participant.
+Thanks to the + 1.0 operation we are covering situation, when best value is 0, but as long as the ranks are related only between themselfes, it doesn't affect final result of the algorithm process. This is why rank is so important thing, because there is no need of setting ranks to sum them to the 1.0, it might as well be 100 or 350. For constistency and ease of entering the data by the user all of the participants should have the same amount of points to assign to the ranks, but its also not necessary, because ranking is counted separately for every participant and object, so rank limit equal to 1000000 at one participant doesn't affect to the rank limit 1.0 at the other participant. The only thing which is important at rank values, is that they are related in scope of one member, so if first attribute have rank 2, and the second have rank 1, the first attribute is twice more important for this particular member than the second attribute.
 
-After passing all attributes for single participant user have to click *Save member* button, which add this member to the temporary list. After passing all of the members user have to click "Save members" button, which create a file from the temporary list. After saving members to file user is able to go to the "Objects" tab.
+After passing all attributes for single participant user have to click *Save member* button, which add this member to the temporary list. If user wants to remove specific member from the list, he must select this user and click *Remove member* button. After passing all of the members user have to click *Save members* button, which create a file from the members list. If user wants to remove this file, he needs to select specific configuration from the dropdown list and click *Remove members* button. After saving members to file user is able to go to the *Objects* tab.
 
 ## Objects
 
+### Possible operations
+
+In this tab, user is able to:
+* save single object *Save object*
+* remove single object from list *Remove object*
+* save all objects on list to the file *Save objects*
+* remove file with saved objects *Remove objects*
+
+### Usage example
+
+As at the previous tab, user must select already prepared configuration from the dropdown list. Now user is able to insert object name and attributes, as well as select current owner of this object from the dropdown list if object is already occupied by someone.
+
+After passing all attributes values user is able to save currently choosen object by clicking *Save object* button. If user wants to remove currently choosen object, he have to click *Remove object* button. If all of the objects are passed correctly, user can save this objects to the file by clicking *Save objects* button. If user wants to remove already prepared file with objects, he have to select specific configuration and click *Remove objects* button.
+
 # Application
 
-For now application is divided into two projects
+For now application is divided into two projects, where one of them is the core project with all logic related to the algorithm process, and the second one created in WPF technology, which utilize algorithm mechanism.
 
 # Further plans
 
-
-
+For now I will focus on unit tests for algorithm, because for now all changes was tested manually. After covering the project with tests I will add another project which will utilize algorithm via WebAPI technology and Swagger interface. The next step will be publishing algorithm code in form of NuGet package and utilize it in the application via package.
 
