@@ -1,8 +1,9 @@
 ﻿using FairDivisionAlgorithm;
 using FairDivisionAlgorithm.DataContexts;
+using FairDivisionAlgorithm.Objects;
+using FairDivisionAlgorithm.Operations;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -201,7 +202,7 @@ namespace FairDivision
 
         private void membersSave_Click(object sender, RoutedEventArgs e)
         {
-            MemberOperations.Save(membersContext.Members.ToList(), 
+            MemberOperations.Save(membersContext.Members.ToList(),
                 membersConfigComboBox.SelectedItem.ToString());
         }
 
@@ -252,7 +253,7 @@ namespace FairDivision
 
             List<string> memberNames = MemberOperations.GetMembers(name).Select(x => x.Name.ToString()).ToList();
 
-            foreach(var member in memberNames)
+            foreach (var member in memberNames)
             {
                 objectsOwnerComboBox.Items.Add(member);
             }
@@ -302,7 +303,7 @@ namespace FairDivision
         {
             var name = objectsNameComboBox.SelectedItem;
 
-            if(name != null && objectsContext.DivisionObjects.Any(
+            if (name != null && objectsContext.DivisionObjects.Any(
                 x => x.ObjectName == name.ToString()))
             {
                 objectsContext.RemoveObject(name.ToString());
@@ -348,7 +349,7 @@ namespace FairDivision
                 MemberOperations.GetMembers(name),
                 ObjectOperations.GetObjects(name));
 
-            Dictionary<string,string> returnedMembers = algorithm.Proceed();
+            Dictionary<string, string> returnedMembers = algorithm.Proceed();
 
             string result = $"Result of algorithm run:\n";
 

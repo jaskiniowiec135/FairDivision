@@ -1,10 +1,9 @@
-﻿using System;
+﻿using FairDivisionAlgorithm.Objects;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace FairDivisionAlgorithm
+namespace FairDivisionAlgorithm.Handlers
 {
     public class XMLHandler
     {
@@ -37,7 +36,7 @@ namespace FairDivisionAlgorithm
             XDocument document = new XDocument(
                 new XElement("members"));
 
-            foreach(MemberObject member in members)
+            foreach (MemberObject member in members)
             {
                 document.Descendants().First(x => x.Name == "members").Add(new XElement("member",
                     new XAttribute("name", member.Name),
@@ -114,7 +113,7 @@ namespace FairDivisionAlgorithm
 
                     member.BestValues[i] = int.Parse(n.Elements().ElementAt(0).Value);
                     member.AcceptableValues[i] = int.Parse(n.Elements().ElementAt(1).Value);
-                    member.Rank[i] = double.Parse(n.Elements().ElementAt(2).Value.Replace('.',','));
+                    member.Rank[i] = double.Parse(n.Elements().ElementAt(2).Value.Replace('.', ','));
                 }
 
                 result.Add(member);

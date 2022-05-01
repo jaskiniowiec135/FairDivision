@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using FairDivisionAlgorithm.Handlers;
+using FairDivisionAlgorithm.Objects;
+using System.Collections.Generic;
 using System.IO;
 
-namespace FairDivisionAlgorithm
+namespace FairDivisionAlgorithm.Operations
 {
     public class ObjectOperations
     {

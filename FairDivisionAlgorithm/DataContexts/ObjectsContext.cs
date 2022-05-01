@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using FairDivisionAlgorithm.Objects;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 

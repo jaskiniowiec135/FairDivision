@@ -52,8 +52,7 @@
     <Compile Include="Objects\DivisionObject.cs" />
     <Compile Include="Objects\MemberObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ValidationResult.cs" />
-    <Compile Include="XMLHandler.cs" />
+    <Compile Include="Handlers\XMLHandler.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

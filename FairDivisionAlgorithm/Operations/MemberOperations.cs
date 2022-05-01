@@ -1,11 +1,13 @@
-﻿using System;
+﻿using FairDivisionAlgorithm.Handlers;
+using FairDivisionAlgorithm.Objects;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FairDivisionAlgorithm
+namespace FairDivisionAlgorithm.Operations
 {
     public class MemberOperations
     {

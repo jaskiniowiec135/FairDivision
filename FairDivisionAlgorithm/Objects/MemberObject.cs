@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace FairDivisionAlgorithm
+namespace FairDivisionAlgorithm.Objects
 {
     public class MemberObject : INotifyPropertyChanged
     {

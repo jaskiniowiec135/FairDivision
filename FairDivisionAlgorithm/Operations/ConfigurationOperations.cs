@@ -5,8 +5,9 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using FairDivisionAlgorithm.Handlers;
 
-namespace FairDivisionAlgorithm
+namespace FairDivisionAlgorithm.Operations
 {
     public static class ConfigurationOperations
     {

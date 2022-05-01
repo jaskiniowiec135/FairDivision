@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FairDivisionAlgorithm
+namespace FairDivisionAlgorithm.Objects
 {
     public class DivisionObject : INotifyPropertyChanged
     {
