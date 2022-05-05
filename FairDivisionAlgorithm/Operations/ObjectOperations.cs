@@ -1,5 +1,4 @@
 ﻿using FairDivisionAlgorithm.Handlers;
-using FairDivisionAlgorithm.Objects;
 using System.Collections.Generic;
 using System.IO;
 

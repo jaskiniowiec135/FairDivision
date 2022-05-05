@@ -1,5 +1,6 @@
-﻿using FairDivisionAlgorithm.Objects;
+﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Xml.Linq;
 
@@ -7,13 +8,13 @@ namespace FairDivisionAlgorithm.Handlers
 {
     public class XMLHandler
     {
-        public string Path;
-        public string FileName;
+        public string path;
+        public string fileName;
 
         public XMLHandler(string path, string fileName)
         {
-            Path = path;
-            FileName = fileName;
+            this.path = path;
+            this.fileName = fileName;
         }
 
         public void SaveConfigurationToFile(Dictionary<string, string> configuration)
@@ -28,7 +29,7 @@ namespace FairDivisionAlgorithm.Handlers
                     new XElement("measureUnit", keyValuePair.Value)));
             }
 
-            document.Save(Path + FileName);
+            document.Save(path + fileName);
         }
 
         public void SaveMembersToFile(List<MemberObject> members)
@@ -36,7 +37,7 @@ namespace FairDivisionAlgorithm.Handlers
             XDocument document = new XDocument(
                 new XElement("members"));
 
-            foreach (MemberObject member in members)
+            foreach(MemberObject member in members)
             {
                 document.Descendants().First(x => x.Name == "members").Add(new XElement("member",
                     new XAttribute("name", member.Name),
@@ -51,7 +52,7 @@ namespace FairDivisionAlgorithm.Handlers
                 }
             }
 
-            document.Save(Path + FileName);
+            document.Save(path + fileName);
         }
 
         public void SaveObjectsToFile(List<DivisionObject> divisionObjects)
@@ -73,13 +74,13 @@ namespace FairDivisionAlgorithm.Handlers
                 }
             }
 
-            document.Save(Path + FileName);
+            document.Save(path + fileName);
         }
 
         public Dictionary<string, string> GetConfigurationFromDocument()
         {
             Dictionary<string, string> result = new Dictionary<string, string>();
-            XDocument configuration = XDocument.Load(Path + FileName);
+            XDocument configuration = XDocument.Load(path + fileName);
 
             foreach (XElement node in configuration.Descendants())
             {
@@ -96,7 +97,7 @@ namespace FairDivisionAlgorithm.Handlers
         public List<MemberObject> GetMembersFromDocument()
         {
             List<MemberObject> result = new List<MemberObject>();
-            XDocument members = XDocument.Load(Path + FileName);
+            XDocument members = XDocument.Load(path + fileName);
 
             foreach (XElement node in members.Descendants().Where(x => x.Name == "member"))
             {
@@ -113,7 +114,7 @@ namespace FairDivisionAlgorithm.Handlers
 
                     member.BestValues[i] = int.Parse(n.Elements().ElementAt(0).Value);
                     member.AcceptableValues[i] = int.Parse(n.Elements().ElementAt(1).Value);
-                    member.Rank[i] = double.Parse(n.Elements().ElementAt(2).Value.Replace('.', ','));
+                    member.Rank[i] = double.Parse(n.Elements().ElementAt(2).Value.Replace('.',','));
                 }
 
                 result.Add(member);
@@ -125,7 +126,7 @@ namespace FairDivisionAlgorithm.Handlers
         public List<DivisionObject> GetObjectsFromDocument()
         {
             List<DivisionObject> result = new List<DivisionObject>();
-            XDocument objects = XDocument.Load(Path + FileName);
+            XDocument objects = XDocument.Load(path + fileName);
 
             foreach (XElement node in objects.Descendants().Where(x => x.Name == "object"))
             {
