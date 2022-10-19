@@ -2,6 +2,7 @@
 using FairDivisionAlgorithm.DataContexts;
 using FairDivisionAlgorithm.Objects;
 using FairDivisionAlgorithm.Operations;
+using FairDivisionAlgorithm.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -90,15 +91,16 @@ namespace FairDivision
 
             Dictionary<string, string> configuration = new Dictionary<string, string>();
 
-            for (int i = 0; i < configurationContext.ConfigParams.Count; i++)
+            if (ConfigurationValidator.IsValid(configurationContext.ConfigParams.ToList(),
+                configurationContext.ConfigUnits.ToList()))
             {
-                if (configurationContext.ConfigParams[i] != "" && configurationContext.ConfigUnits[i] != "")
+                for (int i = 0; i < configurationContext.ConfigParams.Count; i++)
                 {
                     configuration.Add(configurationContext.ConfigParams[i], configurationContext.ConfigUnits[i]);
                 }
-            }
 
-            ConfigurationOperations.Save(configuration, name);
+                ConfigurationOperations.Save(configuration, name);
+            }
         }
 
         private void configRemove_Click(object sender, RoutedEventArgs e)

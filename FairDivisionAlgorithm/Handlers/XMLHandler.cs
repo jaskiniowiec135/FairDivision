@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FairDivisionAlgorithm.Objects;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -45,7 +46,8 @@ namespace FairDivisionAlgorithm.Handlers
 
                 for (int i = 0; i < member.AcceptableValues.Length; i++)
                 {
-                    document.Descendants().Last(x => x.Name == "params").Add(new XElement("param",
+                    document.Descendants().Last(x => x.Name == "params").Add(
+                        new XElement("param",
                         new XElement("bestValue", member.BestValues[i]),
                         new XElement("acceptableValue", member.AcceptableValues[i]),
                         new XElement("rank", member.Rank[i])));

@@ -5,9 +5,9 @@ namespace FairDivisionAlgorithm.Objects
     public class MemberObject : INotifyPropertyChanged
     {
         private string name;
-        private int[] acceptable;
-        private int[] best;
-        private double[] rank;
+        private int[] acceptableValues;
+        private int[] bestValues;
+        private double[] ranks;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -18,26 +18,33 @@ namespace FairDivisionAlgorithm.Objects
         }
         public int[] AcceptableValues
         {
-            get { return acceptable; }
-            set { acceptable = value; OnPropertyChanged("LessThan"); }
+            get { return acceptableValues; }
+            set { acceptableValues = value; OnPropertyChanged("LessThan"); }
         }
         public int[] BestValues
         {
-            get { return best; }
-            set { best = value; OnPropertyChanged("Values"); }
+            get { return bestValues; }
+            set { bestValues = value; OnPropertyChanged("Values"); }
         }
         public double[] Rank
         {
-            get { return rank; }
-            set { rank = value; OnPropertyChanged("Rank"); }
+            get { return ranks; }
+            set { ranks = value; OnPropertyChanged("Rank"); }
         }
 
-        public MemberObject(string n = "", int[] a = null, int[] b = null, double[] r = null)
+        /// <summary>
+        /// Member object storing member preferences.
+        /// </summary>
+        /// <param name="n">Name of member.</param>
+        /// <param name="acceptable">Array of acceptable values for parameters.</param>
+        /// <param name="best">Array of best values for parameters.</param>
+        /// <param name="r">Array of ranks of objects parameters.</param>
+        public MemberObject(string n = "", int[] acceptable = null, int[] best = null, double[] r = null)
         {
             name = n;
-            acceptable = a;
-            best = b;
-            rank = r;
+            acceptableValues = acceptable;
+            bestValues = best;
+            ranks = r;
         }
 
         public void OnPropertyChanged(string propertyName)
